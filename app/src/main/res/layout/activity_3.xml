@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity3"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center_vertical">
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Now"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pre Order"
+        android:layout_gravity="center"  />
+
+    <TextView
+        android:id="@+id/textback"
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:textSize="30sp" />
+
+</LinearLayout>
