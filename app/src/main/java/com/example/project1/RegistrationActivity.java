@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,8 +51,8 @@ public class RegistrationActivity extends AppCompatActivity{
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     private Button registerNew;
-    CheckedTextView diabText, vegText;
-    String myStringData, myKeyValueData,name,UID,diab,veg;
+    CheckBox diabText, vegText;
+    String name,UID,diab,veg;
     EditText nameText;
 
     private String verificationid;
@@ -64,19 +65,30 @@ public class RegistrationActivity extends AppCompatActivity{
         registerNew = findViewById(R.id.buttonContinue);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UID = user.getUid();
-        nameText = findViewById(R.id.editTextTextPersonName);
-        diabText = findViewById(R.id.checkedTextView);
-        vegText= findViewById(R.id.checkedTextView2);
 
-        name=nameText.getText().toString();
-        diab=diabText.getText().toString();
-        veg=vegText.getText().toString();
+        nameText = findViewById(R.id.editTextTextPersonName);
+        diabText = findViewById(R.id.checkbox10);
+        vegText= findViewById(R.id.checkbox20);
+
+
 
         registerNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef= database.getReference("users");
+                DatabaseReference myRef= database.getReference();
+                name=nameText.getText().toString();
+                //diab=diabText.getText().toString();
+                if(diabText.isChecked())
+                   diab="Diabetic";
+                else
+                    diab="Non Diabetic";
+
+               // veg=vegText.getText().toString();
+                if(vegText.isChecked())
+                    veg="Vegetarian";
+                else
+                    veg="Non Vegetarian";
 
                 myRef.child("users").setValue(UID);
                 myRef.child("users").child(UID).child("username").setValue(name);

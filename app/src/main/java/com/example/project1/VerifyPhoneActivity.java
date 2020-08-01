@@ -140,7 +140,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     //verification successful we will start the profile activity
-                                    Intent intent = new Intent(VerifyPhoneActivity.this, WelcomeActivity.class);
+                                    Intent intent = new Intent(VerifyPhoneActivity.this, RegistrationActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
 

@@ -2,6 +2,8 @@ package com.example.project1;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -18,6 +20,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -52,17 +55,22 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.Calendar;
 
-public class Activity6 extends AppCompatActivity implements
-        View.OnClickListener {
+public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener {
+
 
     TextView textView;
     Button btnDatePicker;
     EditText txtDate;
     private Button button;
     private int mYear, mMonth, mDay;
+    RecyclerViewAdapter adapter;
+    Button addButton;
+    ArrayList<String> dates;
 
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -81,36 +89,42 @@ public class Activity6 extends AppCompatActivity implements
             }
         });
 
-        btnDatePicker = (Button) findViewById(R.id.date_btn);
-        txtDate = (EditText) findViewById(R.id.datePicker1);
-        btnDatePicker.setOnClickListener(this);
+        dates = new ArrayList<>();
+        dates.add("");
+
+
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.selectDates);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new RecyclerViewAdapter(this, dates);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+
+        addButton= (Button) findViewById(R.id.buttonAddMore1);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addRow();
+            }
+        });
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    private void addRow() {
+        dates.add("");
+        adapter.notifyDataSetChanged();
+
     }
     public void openActivity7() {
         Intent intent = new Intent(this, Activity7.class);
         startActivity(intent);
     }
-    @Override
-    public void onClick(View v) {
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
-        TableLayout tl = (TableLayout) findViewById(R.id.table2);
 
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
-
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-
-                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
-                    }
-                }, mYear, mMonth, mDay);
-        datePickerDialog.show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -66,7 +66,7 @@ public class WelcomeActivity extends AppCompatActivity {
            // UID = user.getUid();
           //  myRef.child(UID).setValue(user);
         nameText= (TextView) findViewById(R.id.textView2);
-        IDText= (TextView) findViewById(R.id.textViewID);
+       // IDText= (TextView) findViewById(R.id.textViewID);
         prefText=(TextView) findViewById(R.id.textView21);
        // Firebase mRef=new Firebase("https://absolute-accord-283510.firebaseio.com/");
 
@@ -101,7 +101,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
-        IDText.setText(UID);
+       // IDText.setText(UID);
 
     }
 

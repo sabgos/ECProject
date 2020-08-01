@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity"
     android:orientation="vertical"
-    android:layout_gravity="center"
     android:gravity="center">
 
     <!--  EditText where user can write phone number-->
@@ -18,41 +17,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_gravity="center"
+        android:hint="Enter Name"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textSize="20sp"/>
 
 
 
-    <CheckedTextView
-        android:id="@+id/checkedTextView"
+    <CheckBox
+        android:id="@+id/checkbox10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DIABETIC"
+        android:layout_gravity="center"
         android:textSize="20sp"/>
 
 
-    <CheckedTextView
-        android:id="@+id/checkedTextView2"
+    <CheckBox
+        android:id="@+id/checkbox20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="VEGETARIAN" />
-
-
 
     <EditText
         android:id="@+id/editTextMobile"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:digits="0123456789"
-        android:hint="enter your mobile number"
-        android:inputType="phone"
+        android:hint="enter your address"
+        android:layout_gravity="center"
         android:maxLength="12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="232dp" />
+      />
 
     <!--  Button to continue the process -->
 <Button
@@ -60,14 +55,11 @@ android:id="@+id/buttonContinue"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:layout_centerHorizontal="true"
-android:layout_marginTop="324dp"
 android:background="@color/colorPrimaryDark"
 android:text="Continue"
 android:textAllCaps="false"
-android:textColor="#cdd8f1"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.498"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent" />
+    android:layout_gravity="center"
+    android:textColor="#cdd8f1"
+ />
 
     </LinearLayout>

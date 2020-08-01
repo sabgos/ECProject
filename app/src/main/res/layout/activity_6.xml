@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:gravity="center">
 
+ <!--
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -40,48 +41,28 @@
                 android:layout_column="3"
                 android:text="DINNER" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:id="@+id/date_btn"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                />
-
-            <EditText
-                android:id="@+id/datePicker1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
-
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2" />
-
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="3" />
-        </TableRow>
     </TableLayout>
+    -->
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectDates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </ScrollView>
 
-    <Button
-        android:id="@+id/addMore"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Add More" />
+        <Button
+            android:id="@+id/buttonAddMore1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add More" />
 
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ORDER" />
 
