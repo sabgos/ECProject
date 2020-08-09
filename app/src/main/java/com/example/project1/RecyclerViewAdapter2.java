@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -19,17 +20,17 @@ import com.example.project1.R;
 import java.util.Calendar;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder> {
 
     private List<String> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private static final String TAG = "ButtonClicked";
     private int mYear, mMonth, mDay;
-    String mdate;
+    String mName;
 
     // data is passed into the constructor
-    RecyclerViewAdapter(Context context, List<String> data) {
+    RecyclerViewAdapter2(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -37,15 +38,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recyclerview_row, parent, false);
+        View view = mInflater.inflate(R.layout.recyclerview_row2, parent, false);
         return new ViewHolder(view);
     }
 
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String date = mData.get(position);
-        holder.txtDate.setText(date);
+        String name = mData.get(position);
+        holder.txtNum.setText(name);
     }
     // total number of rows
     @Override
@@ -56,42 +57,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txtDate;
+        TextView txtNum;
         Button btnDatePicker;
 
 
         ViewHolder(View itemView) {
             super(itemView);
 
-            txtDate = itemView.findViewById(R.id.datePicker1);
-            btnDatePicker = itemView.findViewById(R.id.date_btn);
-            btnDatePicker.setOnClickListener(this);
-            //itemView.setOnClickListener(this);
+            txtNum = itemView.findViewById(R.id.textView6);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             //  if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-            Log.e(TAG, "Hello Sab");
-            final Calendar c = Calendar.getInstance();
-            mYear = c.get(Calendar.YEAR);
-            mMonth = c.get(Calendar.MONTH);
-            mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(view.getRootView().getContext(), new DatePickerDialog.OnDateSetListener() {
-
-                @Override
-                public void onDateSet(DatePicker view, int year,
-                                      int monthOfYear, int dayOfMonth) {
-
-                    txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-                    mdate= txtDate.getText().toString();
-                    mData.set(getAdapterPosition(),mdate);
-
-                }
-            }, mYear, mMonth, mDay);
-            datePickerDialog.show();
+            //mName= txtName.getText().toString();
+            //Log.e(TAG, "Name="+ mName);
+            //mData.set(getAdapterPosition(),mName);
         }
     }
     // convenience method for getting data at click position

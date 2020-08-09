@@ -20,14 +20,14 @@
         android:textSize="50sp"
         android:textColor="@color/colorHead"/>
 
-    <!--
+
     <TextView
         android:id="@+id/textViewID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="30sp"/>
--->
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

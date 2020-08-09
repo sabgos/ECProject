@@ -12,8 +12,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Activity5 extends AppCompatActivity {
     TextView textView;
+    FirebaseAuth firebaseAuth;
+
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -49,7 +53,9 @@ public class Activity5 extends AppCompatActivity {
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, Activity2.class));
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                startActivity(new Intent(Activity5.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

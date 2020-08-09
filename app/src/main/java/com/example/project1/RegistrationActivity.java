@@ -52,16 +52,17 @@ public class RegistrationActivity extends AppCompatActivity{
 
     private Button registerNew;
     CheckBox diabText, vegText;
-    String name,UID,diab,veg;
-    EditText nameText;
+    String name,UID,diab,veg,address,mobile;
+    EditText nameText,addrText;
 
     private String verificationid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
-        editTextMobile = findViewById(R.id.editTextMobile);
+        Intent intent = getIntent();
+        mobile = intent.getStringExtra("mobile");
+       // editTextMobile = findViewById(R.id.editTextMobile);
         registerNew = findViewById(R.id.buttonContinue);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UID = user.getUid();
@@ -69,7 +70,7 @@ public class RegistrationActivity extends AppCompatActivity{
         nameText = findViewById(R.id.editTextTextPersonName);
         diabText = findViewById(R.id.checkbox10);
         vegText= findViewById(R.id.checkbox20);
-
+        addrText = findViewById(R.id.editTextAddress1);
 
 
         registerNew.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +79,7 @@ public class RegistrationActivity extends AppCompatActivity{
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef= database.getReference();
                 name=nameText.getText().toString();
+                address = addrText.getText().toString();
                 //diab=diabText.getText().toString();
                 if(diabText.isChecked())
                    diab="Diabetic";
@@ -90,10 +92,12 @@ public class RegistrationActivity extends AppCompatActivity{
                 else
                     veg="Non Vegetarian";
 
-                myRef.child("users").setValue(UID);
+                myRef.child("users").push().setValue(UID);
                 myRef.child("users").child(UID).child("username").setValue(name);
                 myRef.child("users").child(UID).child("diabetic").setValue(diab);
                 myRef.child("users").child(UID).child("veg").setValue(veg);
+                myRef.child("users").child(UID).child("address").setValue(address);
+                myRef.child("users").child(UID).child("phone").setValue(mobile);
                 startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
             }
         });

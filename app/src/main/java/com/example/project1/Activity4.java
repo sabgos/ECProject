@@ -14,8 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Activity4 extends AppCompatActivity {
     TextView textView;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,9 @@ public class Activity4 extends AppCompatActivity {
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, Activity2.class));
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                startActivity(new Intent(Activity4.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

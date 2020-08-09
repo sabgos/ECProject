@@ -66,7 +66,7 @@ public class WelcomeActivity extends AppCompatActivity {
            // UID = user.getUid();
           //  myRef.child(UID).setValue(user);
         nameText= (TextView) findViewById(R.id.textView2);
-       // IDText= (TextView) findViewById(R.id.textViewID);
+        IDText= (TextView) findViewById(R.id.textViewID);
         prefText=(TextView) findViewById(R.id.textView21);
        // Firebase mRef=new Firebase("https://absolute-accord-283510.firebaseio.com/");
 
@@ -80,6 +80,7 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 name= snapshot.child("users").child(UID).child("username").getValue(String.class);
+                IDText.setText(UID);
                 nameText.setText(name);
                 String diab=snapshot.child("users").child(UID).child("diabetic").getValue(String.class);
                 String veg=snapshot.child("users").child(UID).child("veg").getValue(String.class);
@@ -101,8 +102,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
-       // IDText.setText(UID);
-
     }
 
 
@@ -159,7 +158,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(WelcomeActivity.this, Activity2.class));
+                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

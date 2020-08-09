@@ -14,9 +14,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Activity8 extends AppCompatActivity {
     private Button button;
     TextView textView;
+    FirebaseAuth firebaseAuth;
+
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -65,7 +69,9 @@ public class Activity8 extends AppCompatActivity {
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, Activity2.class));
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                startActivity(new Intent(Activity8.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -22,7 +22,7 @@
         tools:layout_editor_absoluteY="152dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextPersonName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,12 +45,12 @@
         tools:layout_editor_absoluteY="235dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:inputType="number"
+        android:text=""
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="224dp" />
     </LinearLayout>
@@ -68,7 +68,7 @@
         tools:layout_editor_absoluteY="324dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editTextAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -87,13 +87,34 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Veg"
+           android:id="@+id/vegProf"
        />
        <CheckBox
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Diabetic"
+           android:id="@+id/diabProf"
            />
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpdate"
+        android:text="Update"
+        />
+<!--
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/diabb"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vegg"
+        />
+        -->
     <TextView
         android:id = "@+id/textback"
         android:textSize = "30sp"

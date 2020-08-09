@@ -20,13 +20,12 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class VerifyPhoneActivity extends AppCompatActivity {
+public class VerifyPhoneActivity2 extends AppCompatActivity {
 
     //three objects needed
     //this is the verification id that will be sent to the user
@@ -38,7 +37,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     //fireBase authentication object
     private FirebaseAuth mAuth;
     Button btnSignIn;
-    String mobile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         //getting mobile number from the previous activity
         //and sending the verification code to the number
         Intent intent = getIntent();
-         mobile = intent.getStringExtra("mobile");
+        String mobile = intent.getStringExtra("mobile");
         sendVerificationCode(mobile);
 
 
@@ -111,7 +110,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
                 @Override
                 public void onVerificationFailed(FirebaseException e) {
-                    Toast.makeText(VerifyPhoneActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(VerifyPhoneActivity2.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     Log.e("TAG",e.getMessage() );
                 }
 
@@ -134,28 +133,16 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     //used for signing the user
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(VerifyPhoneActivity.this,
+                .addOnCompleteListener(VerifyPhoneActivity2.this,
                         new OnCompleteListener<AuthResult>() {
 
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     //verification successful we will start the profile activity
-                                   // FirebaseUser user = task.getResult().getUser();
-                                   // long creationTimestamp = user.getMetadata().getCreationTimestamp();
-                                    //long lastSignInTimestamp = user.getMetadata().getLastSignInTimestamp();
-                                    //if (creationTimestamp == lastSignInTimestamp) {
-                                        Intent intent = new Intent(VerifyPhoneActivity.this, RegistrationActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        intent.putExtra("mobile", mobile);
+                                    Intent intent = new Intent(VerifyPhoneActivity2.this, WelcomeActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
-                                    //}
-                                    //else
-                                    //{
-                                      //  Intent intent = new Intent(VerifyPhoneActivity.this, WelcomeActivity.class);
-                                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        //startActivity(intent);
-
 
                                 } else {
 
@@ -166,7 +153,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                         message = "Invalid code entered...";
                                     }
-                                    Toast.makeText(VerifyPhoneActivity.this,message,Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(VerifyPhoneActivity2.this,message,Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

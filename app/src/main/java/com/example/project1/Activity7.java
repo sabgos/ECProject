@@ -14,10 +14,27 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Activity7 extends AppCompatActivity {
+import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+public class Activity7 extends AppCompatActivity implements RecyclerViewAdapter2.ItemClickListener {
+
+    RecyclerViewAdapter2 adapter2;
+    Button addButton;
+    ArrayList<String> personNames;
+    int num=1;
+    FirebaseAuth firebaseAuth;
+
 
     private Button button1,button2;
     TextView textView;
+
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -27,11 +44,21 @@ public class Activity7 extends AppCompatActivity {
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        button1 = (Button) findViewById(R.id.button13);
-        button1.setOnClickListener(new View.OnClickListener() {
+        personNames = new ArrayList<>();
+        personNames.add("1");
+
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.selectPerson);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter2 = new RecyclerViewAdapter2(this, personNames);
+        adapter2.setClickListener(this);
+        recyclerView.setAdapter(adapter2);
+
+        addButton= (Button) findViewById(R.id.buttonAddMore2);
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity8();
+                addRow();
             }
         });
 
@@ -43,7 +70,19 @@ public class Activity7 extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onItemClick(View view, int position) {
+        //Toast.makeText(this, "You clicked " + adapter2.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        adapter2.notifyDataSetChanged();
 
+    }
+
+    private void addRow() {
+        num=num+1;
+        personNames.add(Integer.toString(num));
+        adapter2.notifyDataSetChanged();
+
+    }
     public void openActivity8() {
         Intent intent = new Intent(this, Activity8.class);
         startActivity(intent);
@@ -78,7 +117,9 @@ public class Activity7 extends AppCompatActivity {
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, Activity2.class));
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                startActivity(new Intent(Activity7.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

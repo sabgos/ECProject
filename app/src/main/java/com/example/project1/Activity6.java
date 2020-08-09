@@ -10,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -58,10 +59,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Calendar;
 
 public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener {
 
+    FirebaseAuth firebaseAuth;
 
     TextView textView;
     Button btnDatePicker;
@@ -71,6 +76,7 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
     RecyclerViewAdapter adapter;
     Button addButton;
     ArrayList<String> dates;
+    private static final String TAG = "Date Selected";
 
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -112,7 +118,10 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
 
     @Override
     public void onItemClick(View view, int position) {
-         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+       // adapter.notifyItemInserted(position);
+        adapter.notifyDataSetChanged();
+
     }
 
     private void addRow() {
@@ -151,7 +160,9 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, Activity2.class));
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                startActivity(new Intent(Activity6.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
