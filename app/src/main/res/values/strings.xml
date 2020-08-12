@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Project1</string>
+    <string name="aboutServicePLace">ServicePlace seeks to create services in currently under-served areas using technology to connect the people we serve - using a holistic method to extend compassion and awareness.</string>
+
 </resources>

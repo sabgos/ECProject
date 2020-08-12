@@ -4,45 +4,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
     tools:context=".WelcomeActivity"
     android:orientation="vertical"
     android:gravity="center">
 
+    <!--
+        <TextView
+            android:id="@+id/textViewID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="30sp"/>
+    -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
+        android:layout_height="80sp"
+        android:layout_gravity="center"
+        android:text="WELCOME!"
+        android:textColor="@color/colorDark"
+        android:textSize="40sp"
         tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="221dp"
-        android:layout_gravity="center"
-        android:textSize="50sp"
-        android:textColor="@color/colorHead"/>
-
-
-    <TextView
-        android:id="@+id/textViewID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="30sp"/>
+        tools:layout_editor_absoluteY="221dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60sp"
         android:layout_gravity="center"
-        android:textColor="@color/colorSubHead1"
-        android:textSize="40sp"/>
+        android:textColor="@color/colorHead"
+        android:textSize="50sp"/>
 
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preferences:"
-        android:textColor="@color/colorSubHead2"
+        android:layout_marginTop="50sp"
+        android:text="Dietary Preferences:"
+        android:textColor="@color/colorSubHead1"
         android:layout_gravity="center"
         android:textSize="30sp"/>
 
@@ -50,17 +52,20 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorSubHead2"
+        android:textColor="@color/colorSubHead1"
         android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:textSize="30sp"/>
 
 
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:padding="10sp"
+        android:textSize="20sp"
         android:text="ORDER"
-        android:background="@color/colorButton"
+        android:background="@drawable/rounded_corners"
         android:layout_gravity="center"/>
 
 

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project1.R;
@@ -28,8 +29,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -67,17 +71,52 @@ public class RegistrationActivity extends AppCompatActivity{
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UID = user.getUid();
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef= database.getReference("users");
+
         nameText = findViewById(R.id.editTextTextPersonName);
         diabText = findViewById(R.id.checkbox10);
         vegText= findViewById(R.id.checkbox20);
         addrText = findViewById(R.id.editTextAddress1);
 
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+               if(snapshot.child(UID).exists()) {
+                   name= snapshot.child(UID).child("username").getValue(String.class);
+                   String addrs= snapshot.child(UID).child("address").getValue(String.class);
+                   String diabTxt=snapshot.child(UID).child("diabetic").getValue(String.class);
+                   String vegTxt=snapshot.child(UID).child("veg").getValue(String.class);
+
+                   nameText.setText(name);
+
+                   if(diabTxt.equalsIgnoreCase("Diabetic"))
+                       diabText.setChecked(true);
+                   else
+                       diabText.setChecked(false);
+
+                   if(vegTxt.equalsIgnoreCase("Vegetarian"))
+                       vegText.setChecked(true);
+                   else
+                       vegText.setChecked(false);
+
+                   addrText.setText(addrs);
+
+
+               }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         registerNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef= database.getReference();
+
                 name=nameText.getText().toString();
                 address = addrText.getText().toString();
                 //diab=diabText.getText().toString();
@@ -92,12 +131,12 @@ public class RegistrationActivity extends AppCompatActivity{
                 else
                     veg="Non Vegetarian";
 
-                myRef.child("users").push().setValue(UID);
-                myRef.child("users").child(UID).child("username").setValue(name);
-                myRef.child("users").child(UID).child("diabetic").setValue(diab);
-                myRef.child("users").child(UID).child("veg").setValue(veg);
-                myRef.child("users").child(UID).child("address").setValue(address);
-                myRef.child("users").child(UID).child("phone").setValue(mobile);
+                myRef.push().setValue(UID);
+                myRef.child(UID).child("username").setValue(name);
+                myRef.child(UID).child("diabetic").setValue(diab);
+                myRef.child(UID).child("veg").setValue(veg);
+                myRef.child(UID).child("address").setValue(address);
+                myRef.child(UID).child("phone").setValue(mobile);
                 startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
             }
         });

@@ -22,7 +22,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add More"
+            android:text="Add More+"
             android:id="@+id/buttonAddMore2"
             />
     <Button
@@ -30,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
+        android:background="@drawable/rounded_corners"
         tools:layout_editor_absoluteX="63dp"
         tools:layout_editor_absoluteY="493dp" />
 
