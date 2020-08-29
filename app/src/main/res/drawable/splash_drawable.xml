@@ -8,7 +8,7 @@
     <!-- App logo -->
     <item>
         <bitmap
-            android:src="@drawable/background_splash"
+            android:src="@drawable/background_dark_splash"
             android:gravity="fill_horizontal|fill_vertical"
             >
         </bitmap>

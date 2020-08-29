@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -59,12 +60,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView txtDate;
         Button btnDatePicker;
 
-
         ViewHolder(View itemView) {
             super(itemView);
 
             txtDate = itemView.findViewById(R.id.datePicker1);
             btnDatePicker = itemView.findViewById(R.id.date_btn);
+
             btnDatePicker.setOnClickListener(this);
             //itemView.setOnClickListener(this);
         }
@@ -92,6 +93,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
             }, mYear, mMonth, mDay);
             datePickerDialog.show();
+           // btnDatePicker.setVisibility(View.GONE);
+            //txtDate.setVisibility(View.VISIBLE);
         }
     }
     // convenience method for getting data at click position

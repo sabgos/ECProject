@@ -4,18 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".About1">
+    tools:context=".About1"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center_vertical">
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About Born-2-Help"
+        android:text="About Born 2 Help"
+        android:textColor="@color/colorHead"
+        android:layout_gravity="center"
+        android:textSize="20sp"
         tools:layout_editor_absoluteX="165dp"
         tools:layout_editor_absoluteY="128dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="126dp"
+        android:layout_gravity="center"
+        android:src="@drawable/b2h_logo" />
+
     <TextView
-        android:id = "@+id/textback"
-        android:textSize = "30sp"
-        android:layout_width = "match_parent"
-        android:layout_height = "match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/aboutBorn2Help"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textback"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:textSize="30sp" />
 </LinearLayout>

@@ -8,7 +8,8 @@
     android:layout_gravity="center_vertical"
     tools:context=".WelcomeActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:elevation="2dp">
 
     <!--
         <TextView
@@ -18,44 +19,69 @@
             android:layout_gravity="center"
             android:textSize="30sp"/>
     -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="80sp"
-        android:layout_gravity="center"
-        android:text="WELCOME!"
-        android:textColor="@color/colorDark"
-        android:textSize="40sp"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="221dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="60sp"
-        android:layout_gravity="center"
-        android:textColor="@color/colorHead"
-        android:textSize="50sp"/>
-
-
-    <TextView
-        android:id="@+id/textView3"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
-        android:text="Dietary Preferences:"
-        android:textColor="@color/colorSubHead1"
-        android:layout_gravity="center"
-        android:textSize="30sp"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView21"
+        <ImageView
+            android:id="@+id/smiley"
+            android:layout_width="145dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
+            android:src="@drawable/smiley" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="Welcome!"
+            android:textColor="@color/colorSubHead1"
+            android:textSize="40sp"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="221dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:layout_margin="10sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/colorHead"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorSubHead1"
-        android:layout_gravity="center"
-        android:textSize="30sp"/>
+        android:elevation="2dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Dietary Preferences:"
+            android:textColor="@color/colorSubHead1"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorBlueText"
+            android:textSize="30sp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button8"
@@ -63,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
         android:padding="10sp"
+        android:layout_margin="5sp"
         android:textSize="20sp"
         android:text="ORDER"
         android:background="@drawable/rounded_corners"

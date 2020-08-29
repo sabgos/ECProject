@@ -6,21 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-    private Button register,login;
+    private ImageButton register,login;
     FirebaseUser currentUser;
+    private EditText editTextMobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        register = (Button) findViewById(R.id.buttonReg);
-        login = (Button) findViewById(R.id.buttonLogin);
+        register = (ImageButton) findViewById(R.id.buttonReg);
+        editTextMobile = findViewById(R.id.et_phone);
+        //login = (Button) findViewById(R.id.buttonLogin);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //check whether the user is logged in
@@ -32,11 +36,13 @@ public class MainActivity extends AppCompatActivity {
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, Activity2.class);
+                    String mobileNo = editTextMobile.getText().toString().trim();
+                    Intent intent = new Intent(MainActivity.this, VerifyPhoneActivity.class);
+                    intent.putExtra("mobile", mobileNo);
                     startActivity(intent);
                 }
             });
-
+/*
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -44,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+ */
         }
     }
 }

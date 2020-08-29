@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="450dp"
     tools:context=".Activity10"
     android:orientation="vertical"
     android:gravity="center"
@@ -13,11 +13,32 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Address"
+        android:text="SELECT ADDRESS"
+        android:textColor="@color/colorSubHead1"
         tools:layout_editor_absoluteX="182dp"
         tools:layout_editor_absoluteY="140dp"
         android:textSize="20sp"/>
 
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       >
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:id="@+id/addressText"
+        android:textColor="@color/colorBlueText"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:background="@drawable/update_button"
+        android:id="@+id/addressUpdate"
+        />
+   </LinearLayout>
     <Button
         android:id="@+id/button10"
         android:layout_width="wrap_content"
@@ -33,6 +54,6 @@
     <TextView
         android:id="@+id/textback"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_height="9dp"
         android:textSize="30sp" />
 </LinearLayout>

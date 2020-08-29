@@ -4,19 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:gravity="center"
+    android:layout_gravity="center_vertical">
 
 
     <Button
         android:id="@+id/date_btn"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Select Date"
+        android:background="@drawable/rounded_corners"
+        android:layout_margin="10sp"
+        android:text="Date"
         />
 
     <EditText
         android:id="@+id/datePicker1"
         android:layout_width="wrap_content"
+        android:textColor="@color/colorBlueText"
         android:layout_height="wrap_content"
         />
 
@@ -26,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="2"
+        android:textColor="@color/colorBlueText"
         android:text="Lunch"/>
 
     <CheckBox
@@ -33,5 +39,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="3"
+        android:textColor="@color/colorBlueText"
         android:text="Dinner"/>
 </LinearLayout>

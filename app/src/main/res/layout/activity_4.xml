@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="450dp"
     tools:context=".Activity4"
     android:orientation="vertical"
     android:gravity="center"
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Next Available Menu"
+        android:textColor="@color/colorSubHead1"
         android:textSize="30sp"
         android:layout_centerVertical="true"
         />
@@ -44,18 +45,21 @@
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:text="ITEM"
+                android:textColor="@color/colorBlueText"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textColor="@color/colorBlueText"
                 android:text="VEG" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
+                android:textColor="@color/colorBlueText"
                 android:text="DIABETIC" />
 
         </TableRow>
@@ -69,18 +73,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:textColor="@color/colorBlueText"
                 android:text="Rice" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textColor="@color/colorBlueText"
                 android:text="YES" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
+                android:textColor="@color/colorBlueText"
                 android:text="NO" />
 
         </TableRow>

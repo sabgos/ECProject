@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="450dp"
     tools:context=".Profile"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:layout_gravity="center_vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -18,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name: "
+        android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="51dp"
         tools:layout_editor_absoluteY="152dp" />
 
@@ -28,6 +30,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="139dp" />
     </LinearLayout>
@@ -41,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contact No: "
+        android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="54dp"
         tools:layout_editor_absoluteY="235dp" />
 
@@ -51,6 +55,7 @@
         android:ems="10"
         android:inputType="number"
         android:text=""
+        android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="224dp" />
     </LinearLayout>
@@ -64,6 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address: "
+        android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="324dp" />
 
@@ -74,6 +80,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="313dp" />
     </LinearLayout>
@@ -86,21 +93,24 @@
        <CheckBox
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textColor="@color/colorBlueText"
            android:text="Veg"
            android:id="@+id/vegProf"
        />
-       <CheckBox
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Diabetic"
-           android:id="@+id/diabProf"
-           />
+
+        <CheckBox
+            android:id="@+id/diabProf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diabetic"
+            android:textColor="@color/colorBlueText" />
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnUpdate"
+        android:background="@drawable/update_button"
         android:text="Update"
         />
 <!--

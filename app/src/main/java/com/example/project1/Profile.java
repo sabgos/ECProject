@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -123,6 +124,12 @@ public class Profile extends AppCompatActivity {
                 myRef.child("users").child(UID).child("diabetic").setValue(newDiab);
                 myRef.child("users").child(UID).child("veg").setValue(newVeg);
 
+                Context context = getApplicationContext();
+                CharSequence text = "Data Updated!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
 
                 //db.ref("-Users/-KUanJA9egwmPsJCxXpv").update({ username: newName });
             }

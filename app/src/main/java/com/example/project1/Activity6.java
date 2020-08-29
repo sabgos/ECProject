@@ -2,6 +2,7 @@ package com.example.project1;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -102,6 +103,7 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.selectDates);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         adapter = new RecyclerViewAdapter(this, dates);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);

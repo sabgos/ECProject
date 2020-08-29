@@ -46,7 +46,7 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-        editTextMobile = findViewById(R.id.et_phone);
+        editTextMobile = findViewById(R.id.et_phone2);
         btnContinue = findViewById(R.id.send_otp_btn);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 

@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">Project1</string>
+    <string name="app_name">ElderCareFD</string>
     <string name="aboutServicePLace">ServicePlace seeks to create services in currently under-served areas using technology to connect the people we serve - using a holistic method to extend compassion and awareness.</string>
+    <string name="aboutBorn2Help">Born 2 Help is a volunteer-based group, saw the light of the day in the year 2015 with an aim to provide better living to children across slums in India.</string>
+    <string name="eldercare">ElderCare....</string>
+    <string name="foodrequests">Born-2-Help provides daily food delivery to elderly and disadvantaged people.</string>
+    <string name="born2help">Born for a reason, we have responsibility towards our society and the people who belongs to this society.Let\'s help them whenever needed.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hnt_et_location">Enter location</string>
+        <string name="str_btn_find">Find</string>
+
 
 </resources>

@@ -161,12 +161,16 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
                                     //verification unsuccessful.. display an error message
 
-                                    String message = "Somthing is wrong";
+                                    String message = "Something is wrong";
 
                                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                         message = "Invalid code entered.";
                                     }
-                                    Toast.makeText(VerifyPhoneActivity.this,message,Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(VerifyPhoneActivity.this,message,Toast.LENGTH_SHORT).show();
+
+                                    Log.e("Error", task.getException().toString());
+                                    Toast.makeText(VerifyPhoneActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+
                                 }
                             }
                         });

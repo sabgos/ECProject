@@ -65,7 +65,7 @@ public class Activity3 extends AppCompatActivity {
     }
 
         public void openActivity5() {
-            Intent intent = new Intent(this, Activity6.class);
+            Intent intent = new Intent(this, Activity7.class);
             startActivity(intent);
         }
     public void openActivity6() {

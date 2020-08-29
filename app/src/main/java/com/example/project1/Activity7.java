@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,6 +51,9 @@ public class Activity7 extends AppCompatActivity implements RecyclerViewAdapter2
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.selectPerson);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+
         adapter2 = new RecyclerViewAdapter2(this, personNames);
         adapter2.setClickListener(this);
         recyclerView.setAdapter(adapter2);

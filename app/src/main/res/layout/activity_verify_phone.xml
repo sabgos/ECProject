@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Please wait for the code"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorSubHead1"
         />
 
     <ProgressBar
@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:digits="0123456789"
         android:hint="Enter verification code"
+        android:textColor="@color/colorBlueText"
         android:inputType="phone"
         android:maxLength="10"
        />
