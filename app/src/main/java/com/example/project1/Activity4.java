@@ -16,6 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.ApolloClient;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.FoodSearchQuery;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,8 +31,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.OkHttpClient;
 
 public class Activity4 extends AppCompatActivity {
     TextView textView;
@@ -37,6 +46,66 @@ public class Activity4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_4);
+        //getFoodmenuSearch();
+
+
+        String BASE_URL = "http://167.71.232.133/graphiql";
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        ApolloClient apolloClient = ApolloClient.builder().serverUrl(BASE_URL).okHttpClient(okHttpClient).build();
+
+        apolloClient.query(FoodSearchQuery.builder().build()).enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>() {
+            @Override
+            public void onResponse(@NotNull Response<FoodSearchQuery.Data> response) {
+                Log.i(TAG, response.toString());
+            }
+
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+        });
+        /*
+        apolloClient.query(FoodSearchQuery.builder().build())
+                .enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>()
+                         {
+                             @RequiresApi(api = Build.VERSION_CODES.N)
+                             @Override
+                             public  void  onResponse(@NotNull Response<FoodSearchQuery.Data> response) {
+                                 response.data().foodmenuSearch().stream().forEach(item -> {
+                                     Log.i("id", item.id().toString());
+                                     Log.i("description", item.description());
+                                 });
+                             }
+                             @Override
+                             public  void  onFailure(@NotNull ApolloException e) {
+                                 Log.e(TAG, "failed:"+e.getLocalizedMessage());
+                             }
+                         });
+*/
+
+/*
+        // First, create an `ApolloClient`
+// Replace the serverUrl with your GraphQL endpoint
+        ApolloClient apolloClient = ApolloClient.builder()
+                .serverUrl("http://167.71.232.133/graphiql")
+                .build();
+
+// Then enqueue your query
+        apolloClient.query(new FoodSearchQuery())
+                .enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<FoodSearchQuery.Data> response) {
+                        Log.e("Apollo", "Launch site: " + response.getData().toString());
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.e("Apollo", "Error", e);
+                    }
+                });
+*/
+
+        /*
 // Access a Cloud Firestore instance from your Activity
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -80,11 +149,37 @@ public class Activity4 extends AppCompatActivity {
                     }
                 });
 
-
-        textView = findViewById(R.id.textback);
+*/
+                textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
     }
+
+/*
+    private void getFoodmenuSearch(){
+        ApolloConnector.setupApollo().query(
+                FoodSearchQuery
+                        .builder()
+                        .build())
+                .enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<FoodSearchQuery.Data> response) {
+
+                        Log.d(TAG, "Response: " + response.data().foodmenuSearch());
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+
+                        Log.d(TAG, "Exception: " + e.getMessage(), e);
+                    }
+                });
+    }
+
+ */
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
@@ -97,6 +192,9 @@ public class Activity4 extends AppCompatActivity {
         }
         Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
+            case R.id.homeRet:
+                startActivity(new Intent(this, WelcomeActivity.class));
+                return true;
             case R.id.profile:
                 startActivity(new Intent(this, Profile.class));
                 return true;

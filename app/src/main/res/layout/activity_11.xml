@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlueText"
-        android:text="TextView"
+        android:text="Order successfully placed:"
         tools:layout_editor_absoluteX="123dp"
         tools:layout_editor_absoluteY="105dp" />
 
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlueText"
-        android:text="TextView"
+        android:text="Order No: "
         tools:layout_editor_absoluteX="223dp"
         tools:layout_editor_absoluteY="103dp" />
 
@@ -31,7 +31,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Items"
         android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="169dp"
         tools:layout_editor_absoluteY="183dp" />
@@ -40,7 +40,7 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Address"
         android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="169dp"
         tools:layout_editor_absoluteY="241dp" />
@@ -49,7 +49,7 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Date"
         android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="110dp"
         tools:layout_editor_absoluteY="315dp" />
@@ -58,7 +58,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Time"
         android:textColor="@color/colorBlueText"
         tools:layout_editor_absoluteX="230dp"
         tools:layout_editor_absoluteY="315dp" />

@@ -11,14 +11,20 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -79,16 +85,40 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mMonth = c.get(Calendar.MONTH);
             mDay = c.get(Calendar.DAY_OF_MONTH);
 
-
             DatePickerDialog datePickerDialog = new DatePickerDialog(view.getRootView().getContext(), new DatePickerDialog.OnDateSetListener() {
 
                 @Override
                 public void onDateSet(DatePicker view, int year,
                                       int monthOfYear, int dayOfMonth) {
+                    view.setMinDate(System.currentTimeMillis() - 1000);
 
-                    txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-                    mdate= txtDate.getText().toString();
-                    mData.set(getAdapterPosition(),mdate);
+                   // Toast.makeText(view.getContext(), mDay+" "+mMonth+" "+mYear+"--"+dayOfMonth+"."+monthOfYear+"."+year, Toast.LENGTH_LONG).show();
+
+                    SimpleDateFormat sdfo= new SimpleDateFormat("yyyy-MM-dd");
+                    Date d1 = null;
+                    try {
+                        d1 = sdfo.parse(mYear+"-"+mMonth+"-"+mDay);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    Date d2 = null;
+                    try {
+                        d2 = sdfo.parse(year+"-"+monthOfYear+"-"+dayOfMonth);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    if(d1.compareTo(d2) > 0)
+                    {
+                        Toast.makeText(view.getContext(), "Please select a correct date!", Toast.LENGTH_SHORT).show();
+                        txtDate.setText("");
+                    }
+
+                    else {
+                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        mdate = txtDate.getText().toString();
+                        mData.set(getAdapterPosition(), mdate);
+                    }
 
                 }
             }, mYear, mMonth, mDay);

@@ -4,18 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.ApolloClient;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.firebase.client.annotations.NotNull;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firestore.v1.StructuredQuery;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton register,login;
     FirebaseUser currentUser;
     private EditText editTextMobile;
+    private Object OrderMutation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         editTextMobile = findViewById(R.id.et_phone);
         //login = (Button) findViewById(R.id.buttonLogin);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        ApolloClient apolloClient = ApolloClient.builder()
+                .serverUrl("http://167.71.232.133/graphql")
+                .build();
+
 
         //check whether the user is logged in
         if (currentUser != null) {

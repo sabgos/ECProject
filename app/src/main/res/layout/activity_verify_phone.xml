@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:text="Sign In"
-        android:textColor="#cdd8f1"
+        android:textColor="#FFFFFF"
         />
 
 

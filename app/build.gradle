@@ -1,7 +1,27 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.apollographql.apollo' //Add this
+
+repositories {
+    jcenter()
+}
+dependencies {
+    implementation 'com.apollographql.apollo:apollo-runtime:2.3.1'
+    compileOnly 'org.jetbrains:annotations:13.0'
+    testCompileOnly 'org.jetbrains:annotations:13.0'
+    implementation "com.apollographql.apollo:apollo-android-support:2.3.1"
+    implementation 'com.squareup.okhttp3:okhttp:3.0.1'
+}
+
 
 android {
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
@@ -43,4 +63,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.5.0'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.firebase:firebase-firestore:21.5.0'
+
+   // implementation 'com.apollographql.apollo:apollo-android-support:2.3.1'
+    //implementation 'com.apollographql.apollo:apollo-runtime:2.3.1'
+    implementation 'javax.annotation:jsr250-api:1.0'
+    compile 'com.graphql-java:graphql-java:13.0'
+
 }

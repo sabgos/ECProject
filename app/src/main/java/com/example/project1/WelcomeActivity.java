@@ -142,6 +142,9 @@ public class WelcomeActivity extends AppCompatActivity {
         }
         Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
+            case R.id.homeRet:
+                startActivity(new Intent(this, WelcomeActivity.class));
+                return true;
             case R.id.profile:
                 startActivity(new Intent(this, Profile.class));
                 return true;

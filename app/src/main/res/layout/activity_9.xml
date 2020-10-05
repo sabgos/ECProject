@@ -54,7 +54,7 @@
         android:id="@+id/button14"
         android:background="@drawable/rounded_corners2"
         android:textColor="@color/white"
-        android:text="Confirm Address"
+        android:text="Address →"
         android:padding="10sp"
         android:layout_margin="20sp"
         />

@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Activity3 extends AppCompatActivity {
 
-    private Button button6,button5,button7;
+    private Button button6,button5,button7,btnWsap;
     TextView textView;
     FirebaseAuth firebaseAuth;
 
@@ -58,6 +58,18 @@ public class Activity3 extends AppCompatActivity {
                 openActivity6();
             }
         });
+
+        btnWsap = (Button) findViewById(R.id.buttonWsap);
+        btnWsap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,"Text sent");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+            }
+        });
     }
     public void openActivity2() {
         Intent intent = new Intent(this,Activity4.class);
@@ -85,6 +97,9 @@ public class Activity3 extends AppCompatActivity {
         }
         Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
+            case R.id.homeRet:
+                startActivity(new Intent(this, WelcomeActivity.class));
+                return true;
             case R.id.profile:
                 startActivity(new Intent(this, Profile.class));
                 return true;
