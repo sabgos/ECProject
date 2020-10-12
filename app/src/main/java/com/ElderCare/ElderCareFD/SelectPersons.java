@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.ElderCare.ElderCareFD;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,85 +7,92 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainButtons extends AppCompatActivity {
+public class SelectPersons extends AppCompatActivity implements RecyclerViewAdapter2.ItemClickListener {
 
-    private Button button6,button5,button7,btnWsap;
-    TextView textView;
+    RecyclerViewAdapter2 adapter2;
+    Button addButton;
+    ArrayList<String> personNames;
+    int num=1;
     FirebaseAuth firebaseAuth;
+
+
+    private Button button1,button2;
+    TextView textView;
 
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_buttons);
-
+        setContentView(R.layout.activity_select_persons);
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        personNames = new ArrayList<>();
+        personNames.add("1");
 
-        button6 = (Button) findViewById(R.id.button6);
-        button6.setOnClickListener(new View.OnClickListener() {
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.selectPerson);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+
+        adapter2 = new RecyclerViewAdapter2(this, personNames);
+        adapter2.setClickListener(this);
+        recyclerView.setAdapter(adapter2);
+
+        addButton= (Button) findViewById(R.id.buttonAddMore2);
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity2();
+                addRow();
             }
         });
 
-
-        button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
+        button2 = (Button) findViewById(R.id.button12);
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity5();
-            }
-        });
-
-        button7 = (Button) findViewById(R.id.button7);
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity6();
-            }
-        });
-
-        btnWsap = (Button) findViewById(R.id.buttonWsap);
-        btnWsap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT,"Text sent");
-            sendIntent.setType("text/plain");
-            startActivity(sendIntent);
+                openActivity9();
             }
         });
     }
-    public void openActivity2() {
-        Intent intent = new Intent(this, Menu.class);
-        startActivity(intent);
+    @Override
+    public void onItemClick(View view, int position) {
+        //Toast.makeText(this, "You clicked " + adapter2.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        adapter2.notifyDataSetChanged();
+
     }
 
-        public void openActivity5() {
-            Intent intent = new Intent(this, SelectPersons.class);
-            startActivity(intent);
-        }
-    public void openActivity6() {
-        Intent intent = new Intent(this, PreorderDates.class);
+    private void addRow() {
+        num=num+1;
+        personNames.add(Integer.toString(num));
+        adapter2.notifyDataSetChanged();
+
+    }
+
+    public void openActivity9() {
+        Intent intent = new Intent(this, OrderSummary.class);
         startActivity(intent);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
     }
@@ -114,7 +121,7 @@ public class MainButtons extends AppCompatActivity {
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(MainButtons.this, MainActivity.class));
+                startActivity(new Intent(SelectPersons.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

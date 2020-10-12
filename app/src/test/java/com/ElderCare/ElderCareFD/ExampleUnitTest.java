@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.ElderCare.ElderCareFD;
 
 import org.junit.Test;
 

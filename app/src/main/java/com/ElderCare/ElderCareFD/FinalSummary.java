@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.ElderCare.ElderCareFD;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,20 +9,27 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Orders extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+
+public class FinalSummary extends AppCompatActivity {
     TextView textView;
+    Button button;
+    FirebaseAuth firebaseAuth;
+
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders);
+        setContentView(R.layout.activity_final_summary);
 
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,7 +59,9 @@ public class Orders extends AppCompatActivity {
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, MainActivity.class));
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                startActivity(new Intent(FinalSummary.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

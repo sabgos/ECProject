@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.ElderCare.ElderCareFD;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

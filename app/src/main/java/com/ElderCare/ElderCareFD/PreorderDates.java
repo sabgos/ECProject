@@ -1,62 +1,75 @@
-package com.example.project1;
+package com.ElderCare.ElderCareFD;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import android.content.Intent;
+import android.view.Menu;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SelectPersons extends AppCompatActivity implements RecyclerViewAdapter2.ItemClickListener {
+public class PreorderDates extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener {
 
-    RecyclerViewAdapter2 adapter2;
-    Button addButton;
-    ArrayList<String> personNames;
-    int num=1;
     FirebaseAuth firebaseAuth;
 
-
-    private Button button1,button2;
     TextView textView;
+    Button btnDatePicker;
+    EditText txtDate;
+    private Button button;
+    private int mYear, mMonth, mDay;
+    RecyclerViewAdapter adapter;
+    Button addButton;
+    ArrayList<String> dates;
+    private static final String TAG = "Date Selected";
 
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_persons);
+        setContentView(R.layout.activity_preorder_dates);
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        personNames = new ArrayList<>();
-        personNames.add("1");
+        button = (Button) findViewById(R.id.button9);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dates.get(0).equals(""))
+                    Toast.makeText(getApplicationContext(), "Please select a date!", Toast.LENGTH_SHORT).show();
+                else
+                    openActivity7();
+            }
+        });
+
+        dates = new ArrayList<>();
+        dates.add("");
+
 
         // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.selectPerson);
+        RecyclerView recyclerView = findViewById(R.id.selectDates);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        adapter = new RecyclerViewAdapter(this, dates);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
 
-
-        adapter2 = new RecyclerViewAdapter2(this, personNames);
-        adapter2.setClickListener(this);
-        recyclerView.setAdapter(adapter2);
-
-        addButton= (Button) findViewById(R.id.buttonAddMore2);
+        addButton= (Button) findViewById(R.id.buttonAddMore1);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,32 +77,30 @@ public class SelectPersons extends AppCompatActivity implements RecyclerViewAdap
             }
         });
 
-        button2 = (Button) findViewById(R.id.button12);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity9();
-            }
-        });
     }
+
     @Override
     public void onItemClick(View view, int position) {
-        //Toast.makeText(this, "You clicked " + adapter2.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
-        adapter2.notifyDataSetChanged();
+        //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+       // adapter.notifyItemInserted(position);
+        adapter.notifyDataSetChanged();
 
     }
 
     private void addRow() {
-        num=num+1;
-        personNames.add(Integer.toString(num));
-        adapter2.notifyDataSetChanged();
+        if(dates.get(0).equals(""))
+            Toast.makeText(getApplicationContext(), "Please select a date!", Toast.LENGTH_SHORT).show();
+        else {
+            dates.add("");
+            adapter.notifyDataSetChanged();
+        }
 
     }
-
-    public void openActivity9() {
-        Intent intent = new Intent(this, OrderSummary.class);
+    public void openActivity7() {
+        Intent intent = new Intent(this, SelectPersons.class);
         startActivity(intent);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,7 +132,7 @@ public class SelectPersons extends AppCompatActivity implements RecyclerViewAdap
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(SelectPersons.this, MainActivity.class));
+                startActivity(new Intent(PreorderDates.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

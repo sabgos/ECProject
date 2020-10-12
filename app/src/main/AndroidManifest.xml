@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.project1">
+    package="com.ElderCare.ElderCareFD">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,29 +13,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoginActivity"
+        <activity android:name="com.ElderCare.ElderCareFD.LoginActivity"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".VerifyPhoneActivity"
+        <activity android:name="com.ElderCare.ElderCareFD.VerifyPhoneActivity"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".OtpActivity" />
-        <activity android:name=".RegistrationActivity"
+        <activity android:name="com.ElderCare.ElderCareFD.OtpActivity" />
+        <activity android:name="com.ElderCare.ElderCareFD.RegistrationActivity"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".About2" />
-        <activity android:name=".About1" />
-        <activity android:name=".Orders" />
-        <activity android:name=".Profile"
+        <activity android:name="com.ElderCare.ElderCareFD.About2" />
+        <activity android:name="com.ElderCare.ElderCareFD.About1" />
+        <activity android:name="com.ElderCare.ElderCareFD.Orders" />
+        <activity android:name="com.ElderCare.ElderCareFD.Profile"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".FinalSummary" />
-        <activity android:name=".SelectAddress" />
-        <activity android:name=".OrderSummary" />
-        <activity android:name=".SelectPersons" />
-        <activity android:name=".PreorderDates" />
-        <activity android:name=".Menu" />
-        <activity android:name=".WelcomeActivity"
+        <activity android:name="com.ElderCare.ElderCareFD.FinalSummary" />
+        <activity android:name="com.ElderCare.ElderCareFD.SelectAddress" />
+        <activity android:name="com.ElderCare.ElderCareFD.OrderSummary" />
+        <activity android:name="com.ElderCare.ElderCareFD.SelectPersons" />
+        <activity android:name="com.ElderCare.ElderCareFD.PreorderDates" />
+        <activity android:name="com.ElderCare.ElderCareFD.Menu" />
+        <activity android:name="com.ElderCare.ElderCareFD.WelcomeActivity"
             android:theme="@style/AppTheme.Welcome"/>
-        <activity android:name=".MainButtons" />
+        <activity android:name="com.ElderCare.ElderCareFD.MainButtons" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.ElderCare.ElderCareFD.MainActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

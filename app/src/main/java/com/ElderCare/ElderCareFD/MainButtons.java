@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.ElderCare.ElderCareFD;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,36 +15,77 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class OrderSummary extends AppCompatActivity {
+public class MainButtons extends AppCompatActivity {
+
+    private Button button6,button5,button7,btnWsap;
     TextView textView;
-    Button button;
     FirebaseAuth firebaseAuth;
 
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_summary);
+        setContentView(R.layout.activity_main_buttons);
+
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        button = (Button) findViewById(R.id.button14);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        button6 = (Button) findViewById(R.id.button6);
+        button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity10();
+                openActivity2();
+            }
+        });
+
+
+        button5 = (Button) findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity5();
+            }
+        });
+
+        button7 = (Button) findViewById(R.id.button7);
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity6();
+            }
+        });
+
+        btnWsap = (Button) findViewById(R.id.buttonWsap);
+        btnWsap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,"Text sent");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
             }
         });
     }
+    public void openActivity2() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
 
-    public void openActivity10() {
-        Intent intent = new Intent(this, SelectAddress.class);
+        public void openActivity5() {
+            Intent intent = new Intent(this, SelectPersons.class);
+            startActivity(intent);
+        }
+    public void openActivity6() {
+        Intent intent = new Intent(this, PreorderDates.class);
         startActivity(intent);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
     }
@@ -74,7 +114,7 @@ public class OrderSummary extends AppCompatActivity {
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(OrderSummary.this, MainActivity.class));
+                startActivity(new Intent(MainButtons.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
