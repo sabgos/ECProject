@@ -55,7 +55,7 @@ public class About1 extends AppCompatActivity {
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, Activity2.class));
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

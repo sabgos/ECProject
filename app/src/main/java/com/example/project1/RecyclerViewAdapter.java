@@ -114,6 +114,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         txtDate.setText("");
                     }
 
+
                     else {
                         txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                         mdate = txtDate.getText().toString();

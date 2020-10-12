@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VerifyPhoneActivity2"></activity>
         <activity android:name=".LoginActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".VerifyPhoneActivity"
@@ -26,18 +25,15 @@
         <activity android:name=".Orders" />
         <activity android:name=".Profile"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Activity11" />
-        <activity android:name=".Activity10" />
-        <activity android:name=".Activity9" />
-        <activity android:name=".Activity8" />
-        <activity android:name=".Activity7" />
-        <activity android:name=".Activity6" />
-        <activity android:name=".Activity5" />
-        <activity android:name=".Activity4" />
+        <activity android:name=".FinalSummary" />
+        <activity android:name=".SelectAddress" />
+        <activity android:name=".OrderSummary" />
+        <activity android:name=".SelectPersons" />
+        <activity android:name=".PreorderDates" />
+        <activity android:name=".Menu" />
         <activity android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.Welcome"/>
-        <activity android:name=".Activity3" />
-        <activity android:name=".Activity2" />
+        <activity android:name=".MainButtons" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.Splash">

@@ -1,51 +1,33 @@
 package com.example.project1;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.example.FoodSearchQuery;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import okhttp3.OkHttpClient;
 
-public class Activity4 extends AppCompatActivity {
+public class Menu extends AppCompatActivity {
     TextView textView;
     FirebaseAuth firebaseAuth;
     final String TAG = "Hello menu";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_4);
+        setContentView(R.layout.activity_menu);
         //getFoodmenuSearch();
 
 
@@ -181,7 +163,7 @@ public class Activity4 extends AppCompatActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
     }
@@ -210,7 +192,7 @@ public class Activity4 extends AppCompatActivity {
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(Activity4.this, MainActivity.class));
+                startActivity(new Intent(Menu.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -9,14 +9,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Activity9 extends AppCompatActivity {
+public class FinalSummary extends AppCompatActivity {
     TextView textView;
     Button button;
     FirebaseAuth firebaseAuth;
@@ -26,24 +25,12 @@ public class Activity9 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_9);
+        setContentView(R.layout.activity_final_summary);
+
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        button = (Button) findViewById(R.id.button14);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity10();
-            }
-        });
     }
-
-    public void openActivity10() {
-        Intent intent = new Intent(this, Activity10.class);
-        startActivity(intent);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
@@ -74,7 +61,7 @@ public class Activity9 extends AppCompatActivity {
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(Activity9.this, MainActivity.class));
+                startActivity(new Intent(FinalSummary.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

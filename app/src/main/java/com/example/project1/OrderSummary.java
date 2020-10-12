@@ -9,13 +9,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Activity5 extends AppCompatActivity {
+public class OrderSummary extends AppCompatActivity {
     TextView textView;
+    Button button;
     FirebaseAuth firebaseAuth;
 
     @SuppressLint("RestrictedApi")
@@ -23,11 +26,24 @@ public class Activity5 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_5);
+        setContentView(R.layout.activity_order_summary);
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        button = (Button) findViewById(R.id.button14);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity10();
+            }
+        });
     }
+
+    public void openActivity10() {
+        Intent intent = new Intent(this, SelectAddress.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
@@ -58,7 +74,7 @@ public class Activity5 extends AppCompatActivity {
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(Activity5.this, MainActivity.class));
+                startActivity(new Intent(OrderSummary.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

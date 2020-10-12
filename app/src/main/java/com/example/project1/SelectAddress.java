@@ -25,7 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Activity10 extends AppCompatActivity {
+public class SelectAddress extends AppCompatActivity {
     TextView textView;
     Button button;
     FirebaseAuth firebaseAuth;
@@ -36,7 +36,7 @@ public class Activity10 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_10);
+        setContentView(R.layout.activity_select_address);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UID = user.getUid();
 
@@ -89,7 +89,7 @@ public class Activity10 extends AppCompatActivity {
 
     }
     public void openActivity11() {
-        Intent intent = new Intent(this, Activity11.class);
+        Intent intent = new Intent(this, FinalSummary.class);
         startActivity(intent);
     }
 
@@ -123,7 +123,7 @@ public class Activity10 extends AppCompatActivity {
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(Activity10.this, MainActivity.class));
+                startActivity(new Intent(SelectAddress.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

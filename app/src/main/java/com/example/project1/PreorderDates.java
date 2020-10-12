@@ -7,65 +7,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.app.DatePickerDialog;
-import android.app.ActivityManager;
-import android.app.admin.DevicePolicyManager;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.content.Intent;
+import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Calendar;
-
-public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener {
+public class PreorderDates extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener {
 
     FirebaseAuth firebaseAuth;
 
@@ -84,7 +42,7 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_6);
+        setContentView(R.layout.activity_preorder_dates);
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -92,7 +50,10 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity7();
+                if(dates.get(0).equals(""))
+                    Toast.makeText(getApplicationContext(), "Please select a date!", Toast.LENGTH_SHORT).show();
+                else
+                    openActivity7();
             }
         });
 
@@ -127,12 +88,16 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
     }
 
     private void addRow() {
-        dates.add("");
-        adapter.notifyDataSetChanged();
+        if(dates.get(0).equals(""))
+            Toast.makeText(getApplicationContext(), "Please select a date!", Toast.LENGTH_SHORT).show();
+        else {
+            dates.add("");
+            adapter.notifyDataSetChanged();
+        }
 
     }
     public void openActivity7() {
-        Intent intent = new Intent(this, Activity7.class);
+        Intent intent = new Intent(this, SelectPersons.class);
         startActivity(intent);
     }
 
@@ -167,7 +132,7 @@ public class Activity6 extends AppCompatActivity implements RecyclerViewAdapter.
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(Activity6.this, MainActivity.class));
+                startActivity(new Intent(PreorderDates.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

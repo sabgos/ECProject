@@ -16,15 +16,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-public class Activity7 extends AppCompatActivity implements RecyclerViewAdapter2.ItemClickListener {
+public class SelectPersons extends AppCompatActivity implements RecyclerViewAdapter2.ItemClickListener {
 
     RecyclerViewAdapter2 adapter2;
     Button addButton;
@@ -41,7 +39,7 @@ public class Activity7 extends AppCompatActivity implements RecyclerViewAdapter2
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_7);
+        setContentView(R.layout.activity_select_persons);
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -87,12 +85,9 @@ public class Activity7 extends AppCompatActivity implements RecyclerViewAdapter2
         adapter2.notifyDataSetChanged();
 
     }
-    public void openActivity8() {
-        Intent intent = new Intent(this, Activity8.class);
-        startActivity(intent);
-    }
+
     public void openActivity9() {
-        Intent intent = new Intent(this, Activity9.class);
+        Intent intent = new Intent(this, OrderSummary.class);
         startActivity(intent);
     }
 
@@ -126,7 +121,7 @@ public class Activity7 extends AppCompatActivity implements RecyclerViewAdapter2
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();
-                startActivity(new Intent(Activity7.this, MainActivity.class));
+                startActivity(new Intent(SelectPersons.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
