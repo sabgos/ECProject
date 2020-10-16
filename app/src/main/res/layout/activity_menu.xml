@@ -30,6 +30,7 @@
         android:layout_centerVertical="true"
         />
 
+    <!--
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="110dp"
@@ -69,26 +70,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:textColor="@color/colorBlueText"
-                android:text="Rice" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:textColor="@color/colorBlueText"
-                android:text="YES" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="3"
-                android:textColor="@color/colorBlueText"
-                android:text="NO" />
 
         </TableRow>
 
@@ -100,6 +81,42 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:textColor="@color/colorBlueText"
+        android:id="@+id/menuItem"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:textColor="@color/colorBlueText"
+        android:id="@+id/menuVeg"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:id="@+id/menuDiab"
+        android:textColor="@color/colorBlueText"
+        />
+-->
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:background="#51D6DCFF">
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/showItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
     <TextView
         android:id="@+id/textback"

@@ -1,19 +1,29 @@
 package com.ElderCare.ElderCareFD;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.firebase.client.annotations.NotNull;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firestore.v1.StructuredQuery;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton register,login;
+    private ImageButton login;
+    private CardView register;
     FirebaseUser currentUser;
     private EditText editTextMobile;
     private Object OrderMutation;
@@ -24,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        register = (ImageButton) findViewById(R.id.buttonReg);
+        register = (CardView) findViewById(R.id.buttonReg);
         editTextMobile = findViewById(R.id.et_phone);
         //login = (Button) findViewById(R.id.buttonLogin);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
