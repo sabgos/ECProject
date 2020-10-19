@@ -26,6 +26,7 @@ import com.google.gson.GsonBuilder;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -35,45 +36,26 @@ public class Menu extends AppCompatActivity implements RecyclerViewAdapter3.Item
 
     RecyclerViewAdapter3 adapter;
     String TAG = "Hello menu";
+    public ArrayList<String> itemsName = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
         // data to populate the RecyclerView with
-        ArrayList<String> itemsName = new ArrayList<>();
-        itemsName.add("AAA");
 
-        String BASE_URL = "http://167.71.232.133/graphql";
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        //itemsName.add("AAA");
 
-        ApolloClient apolloClient = ApolloClient.builder().serverUrl(BASE_URL).okHttpClient(okHttpClient).build();
+        //String BASE_URL = "http://167.71.232.133/graphql";
+       // OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
 
-        apolloClient.query(FoodSearchQuery.builder().build()).enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onResponse(@NotNull Response<FoodSearchQuery.Data> response) {
-                Log.i(TAG, response.toString());
-                AtomicInteger i = new AtomicInteger(1);
-                response.data().foodmenuSearch().stream().forEach(item -> {
-                    Log.i(TAG, String.valueOf(i.get()));
-                    Log.i(TAG, item.name());
+      //  ApolloClient apolloClient = ApolloClient.builder().serverUrl(BASE_URL).okHttpClient(okHttpClient).build();
 
-                    itemsName.add(item.name());
+        GetMenu.showMenu();
 
-                    i.set(i.get() + 1);
-                });
-            }
-            @Override
-            public void onFailure(@NotNull ApolloException e) {
-                Log.e(TAG, e.getMessage(), e);
-            }
-        });
-
-
-        Log.i(TAG + "length=", String.valueOf(itemsName.size()));
+        Log.i(TAG + "3length=", String.valueOf(itemsName.size()));
         for(int i=0;i<itemsName.size();i++)
-         Log.i(TAG + "item=", String.valueOf(itemsName.get(i)));
+         Log.i(TAG + "3item=", String.valueOf(itemsName.get(i)));
 
 
 // set up the RecyclerView

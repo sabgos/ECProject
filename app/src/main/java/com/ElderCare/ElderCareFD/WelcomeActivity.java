@@ -78,9 +78,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 name= snapshot.child("users").child(UID).child("username").getValue(String.class);
                 //IDText.setText(UID);
                 nameText.setText(name);
-                String diab=snapshot.child("users").child(UID).child("diabetic").getValue(String.class);
-                String veg=snapshot.child("users").child(UID).child("veg").getValue(String.class);
-                prefText.setText(diab+"/"+veg);
+               // String diab=snapshot.child("users").child(UID).child("diabetic").getValue(String.class);
+                //String veg=snapshot.child("users").child(UID).child("veg").getValue(String.class);
+              //  prefText.setText(diab+"/"+veg);
                /*
                 if(diab=="no")
                     diab="Non Diabetic";

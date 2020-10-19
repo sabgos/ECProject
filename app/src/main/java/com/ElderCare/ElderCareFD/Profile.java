@@ -48,8 +48,8 @@ public class Profile extends AppCompatActivity {
         addrsText=(EditText) findViewById(R.id.editTextAddress);
         //diabText = (EditText) findViewById(R.id.diabb);
         //vegText = (EditText) findViewById(R.id.vegg);
-        diab = (CheckBox) findViewById(R.id.diabProf);
-        veg = (CheckBox) findViewById(R.id.vegProf);
+       // diab = (CheckBox) findViewById(R.id.diabProf);
+      //  veg = (CheckBox) findViewById(R.id.vegProf);
 
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -71,13 +71,13 @@ public class Profile extends AppCompatActivity {
                 nameText.setText(name);
                 addrsText.setText(addrs);
                 phoneText.setText(phone);
-                String diabTxt=snapshot.child("users").child(UID).child("diabetic").getValue(String.class);
-                String vegTxt=snapshot.child("users").child(UID).child("veg").getValue(String.class);
+        //        String diabTxt=snapshot.child("users").child(UID).child("diabetic").getValue(String.class);
+          //      String vegTxt=snapshot.child("users").child(UID).child("veg").getValue(String.class);
                // diabText.setText(diabTxt);
                 //vegText.setText(vegTxt);
 
     //Log.e(TAG, diabTxt);
-
+/*
                 if(diabTxt.equalsIgnoreCase("Diabetic"))
                     diab.setChecked(true);
                 else
@@ -87,7 +87,7 @@ public class Profile extends AppCompatActivity {
                     veg.setChecked(true);
                 else
                     veg.setChecked(false);
-
+*/
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

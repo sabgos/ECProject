@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item>
+    <shape android:shape="rectangle">
+        <gradient
+            android:type="linear"
+            android:angle="135"
+            android:startColor="#126A2E"
+            android:endColor="#126A2E" />
+
+    </shape>
+</item>
+
+    <item
+        android:bottom="30dp"
+        android:left="30dp"
+        android:right="30dp"
+        android:top="30dp">
+        <bitmap
+            android:tint="#FFF"
+            android:src="@drawable/whatsapp_logo">
+        </bitmap>
+
+    </item>
+</layer-list>

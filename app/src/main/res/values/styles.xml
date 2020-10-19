@@ -30,4 +30,14 @@
         <item name="colorAccent">@android:color/holo_blue_light</item>
     </style>
 
+
+    <style parent="TextAppearance.MaterialComponents.Chip" name="chipTextAppearance">
+      <item name="android:textSize">16sp</item>
+    <!--<item name="android:fontFamily">monospace</item>-->
+      <item name="android:textStyle">bold</item>
+    </style>
+
+    <style parent="chipTextAppearance" name="chipTextAppearanceSmall">
+      <item name="android:textSize">15sp</item>
+    </style>
 </resources>
