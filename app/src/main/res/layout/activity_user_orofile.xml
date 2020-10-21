@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="#FFF">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/editTextPersonName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text=""
+            android:textColor="@color/colorBlueText"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="224dp"
+            tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/editTextAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textColor="@color/colorBlueText"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="313dp"
+            tools:ignore="MissingConstraints" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlueText"
+            android:text="Veg"
+            android:id="@+id/vegProf"
+            tools:ignore="MissingConstraints" />
+
+        <CheckBox
+            android:id="@+id/diabProf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diabetic"
+            android:textColor="@color/colorBlueText"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnUpdate"
+            android:background="@drawable/update_button"
+            android:text="Update"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/diabb"
+            tools:ignore="MissingConstraints" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vegg"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textback"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
