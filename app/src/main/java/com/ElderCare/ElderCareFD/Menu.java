@@ -51,20 +51,45 @@ public class Menu extends AppCompatActivity implements RecyclerViewAdapter3.Item
 
       //  ApolloClient apolloClient = ApolloClient.builder().serverUrl(BASE_URL).okHttpClient(okHttpClient).build();
 
-        GetMenu.showMenu();
 
+        ArrayList<String> itemsName = new ArrayList<>();
+        ApolloConnector.setupApollo().query(FoodSearchQuery.builder().build()).enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>() {
+            public String TAG="Hello : GetMenu";
+
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(@NotNull Response<FoodSearchQuery.Data> response) {
+                Log.i(TAG, response.toString());
+                AtomicInteger i = new AtomicInteger(1);
+                response.data().foodmenuSearch().stream().forEach(item -> {
+                    Log.i(TAG, String.valueOf(i.get()));
+                    Log.i(TAG, item.name());
+
+                    itemsName.add(item.name());
+                     Log.i(TAG + "2length=", String.valueOf(itemsName.size()));
+                     Log.i(TAG + "2item=", String.valueOf(itemsName.get(itemsName.size() - 1)));
+
+                    i.set(i.get() + 1);
+                });
+
+            }
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+        });
         Log.i(TAG + "3length=", String.valueOf(itemsName.size()));
         for(int i=0;i<itemsName.size();i++)
          Log.i(TAG + "3item=", String.valueOf(itemsName.get(i)));
 
 
 // set up the RecyclerView
+
         RecyclerView recyclerView = findViewById(R.id.showItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerViewAdapter3(this, itemsName);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-
 
 
     }
