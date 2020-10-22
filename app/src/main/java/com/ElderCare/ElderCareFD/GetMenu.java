@@ -17,8 +17,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static android.content.ContentValues.TAG;
 
-public class GetMenu extends Menu{
-    public static void showMenu() {
+public interface GetMenu{
+    static void showMenu() {
         ApolloConnector.setupApollo().query(FoodSearchQuery.builder().build()).enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>() {
             public String TAG="Menu";
 
