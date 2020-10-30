@@ -1,7 +1,14 @@
-query FoodSearchQuery{
-    foodmenuSearch(searchCriteria:null)
+query FoodSearchQuery($searchFields :FoodmenuSearchCriteriaInput)
+{
+    foodmenuSearch(searchCriteria:$searchFields)
     {
+        name
         id
+        activeFlag
         description
+        diabeticFlag
+        effOn
+        nonVegFlag
+        version
     }
 }

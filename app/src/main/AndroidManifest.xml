@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.project1">
+    package="com.ElderCare.ElderCareFD">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,32 +13,38 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".VerifyPhoneActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <!--        <activity android:name=".Dashboard"></activity>-->
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".VerifyPhoneActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".OtpActivity" />
-        <activity android:name=".RegistrationActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".RegistrationActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".About2" />
         <activity android:name=".About1" />
         <activity android:name=".Orders" />
-        <activity android:name=".Profile"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Profile"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".FinalSummary" />
         <activity android:name=".SelectAddress" />
         <activity android:name=".OrderSummary" />
         <activity android:name=".SelectPersons" />
         <activity android:name=".PreorderDates" />
-        <activity android:name=".Menu" />
-        <activity android:name=".WelcomeActivity"
-            android:theme="@style/AppTheme.Welcome"/>
-        <activity android:name=".MainButtons" />
+        <activity android:name=".Menus" />
+        <activity android:name=".WelcomeActivity" />
+        <!--android:theme="@style/AppTheme.Welcome"-->
+        <!--        <activity android:name=".MainButtons" />-->
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

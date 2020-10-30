@@ -16,4 +16,7 @@
 
     <color name="media">#EA6D78</color>
         <color name="white">#FFFFFF</color>
+    <color name="diabeticColor">#A57E20</color>
+    <color name="vegetarianColor">#00A652</color>
+    <color name="nonVegetarianColor">#AB1125</color>
 </resources>

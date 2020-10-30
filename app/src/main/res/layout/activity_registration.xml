@@ -1,83 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
-    android:layout_gravity="center_vertical"
-    android:layout_margin="20dp"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".RegistrationActivity"
-    >
-
-    <!--  EditText where user can write phone number-->
-    <Space
-        android:layout_width="115dp"
-        android:layout_height="123dp"></Space>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:gravity="center"
         android:orientation="vertical"
-       >
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorSubHead1"
-            android:text="Register:"
-            />
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="Enter Your Name"
-            android:textColor="@color/colorBlueText"
-            android:inputType="textPersonName"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="Register"
+                android:textColor="@color/colorSubHead1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/colorSubHead1" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Enter Your Name"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorBlueText"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkbox10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="DIABETIC"
+                    android:textColor="@color/colorBlueText"
+                    android:textSize="20sp" />
 
 
-        <CheckBox
-            android:id="@+id/checkbox10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/colorBlueText"
-            android:text="DIABETIC"
-            android:textSize="20sp" />
+                <CheckBox
+                    android:id="@+id/checkbox20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="VEGETARIAN"
+                    android:textColor="@color/colorBlueText"
+                    android:textSize="20sp" />
 
+            </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/checkbox20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlueText"
-            android:layout_gravity="center"
-            android:text="VEGETARIAN" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textColor="@color/colorSubHead1" />
 
-        <EditText
-            android:id="@+id/editTextAddress1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/colorBlueText"
-            android:hint="Enter Your Address" />
+            <EditText
+                android:id="@+id/editTextAddress1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Enter Your Address"
+                android:textColor="@color/colorBlueText" />
 
-        <!--  Button to continue the process -->
-        <Button
-            android:id="@+id/buttonContinue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:background="@color/colorPrimaryDark"
-            android:text="Continue"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
+            <!--  Button to continue the process -->
+            <Button
+                android:id="@+id/buttonContinue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <include
+        android:id="@+id/include"
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+

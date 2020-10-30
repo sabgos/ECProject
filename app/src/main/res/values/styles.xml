@@ -4,25 +4,25 @@
     <item name="android:windowBackground">@drawable/ic_launcher_background</item>
     </style>  -->
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:windowBackground">@drawable/background_logos</item>
+        <!--<item name="android:windowBackground">@drawable/background_logos</item>-->
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.Welcome" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:windowBackground">@drawable/background_white_welcome</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+<!--    <style name="AppTheme.Welcome" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="android:windowBackground">@drawable/background_white_welcome</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--    </style>-->
 
     <!-- The splash theme. to set the background with your splash screen drawable -->
     <style name="AppTheme.Splash" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_drawable</item>
+        <!--<item name="android:windowBackground">@drawable/splash_drawable</item>-->
         <item name="android:windowFullscreen">true</item>
     </style>
 
@@ -30,4 +30,24 @@
         <item name="colorAccent">@android:color/holo_blue_light</item>
     </style>
 
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">#fff</item>
+        <item name="android:textSize">20sp</item>
+
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+
+        <item name="colorControlNormal">#2D9A87</item>
+        <item name="colorControlActivated">#2D9A87</item>
+    </style>
+
+    <style name="chipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">16sp</item>
+        <!--<item name="android:fontFamily">monospace</item>-->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="chipTextAppearanceSmall" parent="chipTextAppearance">
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

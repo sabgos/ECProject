@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp"
-    android:gravity="center"
-    android:layout_gravity="center_vertical">
+    android:gravity="center">
 
     <TextView
         android:id="@+id/textView4"
