@@ -47,43 +47,47 @@
 
         </LinearLayout>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:layout_width="wrap_content"
+        <com.nex3z.flowlayout.FlowLayout
+            android:id="@+id/FlowLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
-            android:text="Diabetic"
-            android:textAppearance="@style/chipTextAppearanceSmall"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:chipBackgroundColor="#A57E20"
-            app:layout_constraintEnd_toStartOf="@+id/chip3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:text="Vegetarian"
-            android:textAppearance="@style/chipTextAppearanceSmall"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:chipBackgroundColor="#00A652"
-            app:closeIconTint="@color/white"
+            android:layout_margin="8dp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/chip2"
-            app:layout_constraintTop_toTopOf="@+id/chip2" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:textAppearance="@style/chipTextAppearanceSmall"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:chipBackgroundColor="@color/diabeticColor"
+                tools:text="Diabetic" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:textAppearance="@style/chipTextAppearanceSmall"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:chipBackgroundColor="@color/nonVegetarianColor"
+                app:closeIconTint="@color/white"
+                tools:text="Vegetarian" />
+
+        </com.nex3z.flowlayout.FlowLayout>
+
 
         <!--        <androidx.constraintlayout.widget.Guideline-->
         <!--            android:id="@+id/guideline"-->
@@ -102,7 +106,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chip2"
+            app:layout_constraintTop_toBottomOf="@+id/FlowLayout"
             tools:text="Date: 10-Oct-2020 (9PM) " />
 
         <com.google.android.material.button.MaterialButton

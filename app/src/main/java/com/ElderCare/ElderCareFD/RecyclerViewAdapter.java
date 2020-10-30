@@ -6,14 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.ElderCare.ElderCareFD.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recyclerview_row, parent, false);
+        View view = mInflater.inflate(R.layout.pre_order_recyclerview_row, parent, false);
         return new ViewHolder(view);
     }
 
@@ -47,7 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String date = mData.get(position);
-        holder.txtDate.setText(date);
+        holder.btnDatePicker.setText(date);
     }
     // total number of rows
     @Override
@@ -58,14 +55,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txtDate;
-        Button btnDatePicker;
+        //TextView txtDate;
+        EditText btnDatePicker;
 
         ViewHolder(View itemView) {
             super(itemView);
 
-            txtDate = itemView.findViewById(R.id.datePicker1);
-            btnDatePicker = itemView.findViewById(R.id.date_btn);
+            //txtDate = itemView.findViewById(R.id.datePicker1);
+            btnDatePicker = itemView.findViewById(R.id.datePicker1);
 
             btnDatePicker.setOnClickListener(this);
             //itemView.setOnClickListener(this);
@@ -103,16 +100,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         e.printStackTrace();
                     }
 
-                    if(d1.compareTo(d2) > 0)
-                    {
+                    if(d1.compareTo(d2) > 0) {
                         Toast.makeText(view.getContext(), "Please select a correct date!", Toast.LENGTH_SHORT).show();
-                        txtDate.setText("");
+                        btnDatePicker.setText("");
                     }
 
-
                     else {
-                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-                        mdate = txtDate.getText().toString();
+                        btnDatePicker.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        mdate = btnDatePicker.getText().toString();
                         mData.set(getAdapterPosition(), mdate);
                     }
 

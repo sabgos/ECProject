@@ -26,7 +26,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="8dp">
 
 
                 <TextView
@@ -59,6 +60,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView15">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPersonName2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -94,6 +96,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView36">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -130,6 +133,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView37">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -149,231 +153,213 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardView"
-                    android:layout_width="wrap_content"
+
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="18dp"
-                    app:cardBackgroundColor="#A57E20"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/cardView2"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    android:layout_marginTop="16dp"
+                    android:padding="20dp"
+                    android:background="@drawable/rounded_border"
+                    android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView38">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:text="Diabetic"
-                        android:textColor="#FFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:weightSum="5"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:id="@+id/vegCB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
-                </com.google.android.material.card.MaterialCardView>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/vegChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/vegetarianColor"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardView2"
+                            <TextView
+                                android:id="@+id/vegChipTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:text="Vegetarian"
+                                android:textColor="#FFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:id="@+id/nonVegCB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/nonVegChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/nonVegetarianColor"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp">
+
+                            <TextView
+                                android:id="@+id/nonVegChipTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="Non Vegetarian"
+                                android:textColor="#FFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="#00A652"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:layout_constraintEnd_toStartOf="@+id/cardView3"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="@+id/cardView">
+                    android:background="#ffffff"
+                    android:text="  I am  "
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout5"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout5" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/rounded_border"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:text="Vegetarian"
-                        android:textColor="#FFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal"
+                        android:weightSum="5">
 
-                </com.google.android.material.card.MaterialCardView>
+                        <CheckBox
+                            android:id="@+id/diabeticCB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/diabeticChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/diabeticColor"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardView3"
+                            <TextView
+                                android:id="@+id/diabeticChipTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:text="Diabetic"
+                                android:textColor="#FFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/nonDiabeticCB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/nonDiabeticChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/diabeticColor"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp">
+
+                            <TextView
+                                android:id="@+id/nonDiabeticChipTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="Non Diabetic"
+                                android:textColor="#FFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="#AB1125"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/cardView2"
-                    app:layout_constraintTop_toTopOf="@+id/cardView">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:text="Non Vegetarian "
-                        android:textColor="#FFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                </com.google.android.material.card.MaterialCardView>
+                    android:background="#ffffff"
+                    android:text="  I have "
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout6"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout6" />
 
 
-                <!--    &lt;!&ndash;-->
-                <!--    <EditText-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:id="@+id/diabb"-->
-                <!--        />-->
-                <!--    <EditText-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:id="@+id/vegg"-->
-                <!--        />-->
-                <!--        &ndash;&gt;-->
-                <!--    <TextView-->
-                <!--        android:id="@+id/textView16"-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:layout_marginTop="16dp"-->
-                <!--        android:text="Contact No: "-->
-                <!--        android:textColor="@color/colorBlueText"-->
-                <!--        android:textSize="16sp"-->
-                <!--        app:layout_constraintStart_toStartOf="@+id/textView15"-->
-                <!--        app:layout_constraintTop_toBottomOf="@+id/editTextPersonName2" />-->
-
-                <!--    <TextView-->
-                <!--        android:id="@+id/textView17"-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:layout_marginTop="16dp"-->
-                <!--        android:text="Address: "-->
-                <!--        android:textColor="@color/colorBlueText"-->
-                <!--        android:textSize="16sp"-->
-                <!--        app:layout_constraintStart_toStartOf="@+id/textView16"-->
-                <!--        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />-->
-
-                <!--    <androidx.constraintlayout.widget.Barrier-->
-                <!--        android:id="@+id/barrier"-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        app:barrierDirection="end"-->
-                <!--        app:constraint_referenced_ids="textView15,textView16,textView17"-->
-                <!--        tools:layout_editor_absoluteX="16dp" />-->
-
-                <!--    <CheckBox-->
-                <!--        android:id="@+id/vegProf"-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:layout_marginTop="30dp"-->
-                <!--        android:layout_marginEnd="16dp"-->
-                <!--        android:layout_marginRight="16dp"-->
-                <!--        android:text="Veg"-->
-                <!--        android:textColor="@color/colorBlueText"-->
-                <!--        app:layout_constraintEnd_toStartOf="@+id/diabProf"-->
-                <!--        app:layout_constraintHorizontal_bias="0.5"-->
-                <!--        app:layout_constraintHorizontal_chainStyle="packed"-->
-                <!--        app:layout_constraintStart_toStartOf="parent"-->
-                <!--        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />-->
-
-                <!--    <CheckBox-->
-                <!--        android:id="@+id/diabProf"-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:layout_marginStart="16dp"-->
-                <!--        android:layout_marginLeft="16dp"-->
-                <!--        android:text="Diabetic"-->
-                <!--        android:textColor="@color/colorBlueText"-->
-                <!--        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--        app:layout_constraintHorizontal_bias="0.5"-->
-                <!--        app:layout_constraintStart_toEndOf="@+id/vegProf"-->
-                <!--        app:layout_constraintTop_toTopOf="@+id/vegProf" />-->
-
-                <!--    <Button-->
-                <!--        android:id="@+id/btnUpdate"-->
-                <!--        android:layout_width="wrap_content"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:layout_gravity="center"-->
-                <!--        android:layout_marginTop="30dp"-->
-                <!--        android:background="@drawable/update_button"-->
-                <!--        android:text="   Update   "-->
-                <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--        app:layout_constraintStart_toStartOf="parent"-->
-                <!--        app:layout_constraintTop_toBottomOf="@+id/vegProf"-->
-                <!--        app:layout_constraintVertical_bias="0.0" />-->
-
-                <!--    <TextView-->
-                <!--        android:id="@+id/textback"-->
-                <!--        android:layout_width="match_parent"-->
-                <!--        android:layout_height="8dp"-->
-                <!--        android:textSize="30sp"-->
-                <!--        app:layout_constraintBottom_toBottomOf="parent" />-->
-
-                <!--    <EditText-->
-                <!--        android:id="@+id/editTextPersonName2"-->
-                <!--        android:layout_width="0dp"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:layout_marginStart="8dp"-->
-                <!--        android:layout_marginLeft="8dp"-->
-                <!--        android:ems="10"-->
-                <!--        android:hint="Name"-->
-                <!--        android:inputType="textPersonName"-->
-                <!--        android:textColor="@color/colorBlueText"-->
-                <!--        app:layout_constraintBottom_toBottomOf="@+id/textView15"-->
-                <!--        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--        app:layout_constraintStart_toEndOf="@+id/barrier"-->
-                <!--        app:layout_constraintTop_toTopOf="@+id/textView15" />-->
-
-                <!--    <EditText-->
-                <!--        android:id="@+id/editTextPhone"-->
-                <!--        android:layout_width="0dp"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:ems="10"-->
-                <!--        android:hint="Mobile Number"-->
-                <!--        android:inputType="number"-->
-                <!--        android:textColor="@color/colorBlueText"-->
-                <!--        app:layout_constraintBottom_toBottomOf="@+id/textView16"-->
-                <!--        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--        app:layout_constraintStart_toStartOf="@+id/editTextPersonName2"-->
-                <!--        app:layout_constraintTop_toTopOf="@+id/textView16" />-->
-
-                <!--    <EditText-->
-                <!--        android:id="@+id/editTextAddress"-->
-                <!--        android:layout_width="0dp"-->
-                <!--        android:layout_height="wrap_content"-->
-                <!--        android:ems="10"-->
-                <!--        android:hint="Address"-->
-                <!--        android:inputType="textPersonName"-->
-                <!--        android:textColor="@color/colorBlueText"-->
-                <!--        app:layout_constraintBottom_toBottomOf="@+id/textView17"-->
-                <!--        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--        app:layout_constraintStart_toStartOf="@+id/editTextPersonName2"-->
-                <!--        app:layout_constraintTop_toTopOf="@+id/textView17" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="166dp"
-            android:text="   Update   "
+            android:layout_margin="16dp"
+            android:text="Update"
             android:textStyle="bold"
             app:backgroundTint="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/include"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView"
             app:layout_constraintVertical_bias="0.0" />
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/footer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

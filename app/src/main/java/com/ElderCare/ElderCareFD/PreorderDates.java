@@ -81,18 +81,19 @@ public class PreorderDates extends AppCompatActivity implements RecyclerViewAdap
 
     @Override
     public void onItemClick(View view, int position) {
-        //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
        // adapter.notifyItemInserted(position);
-        adapter.notifyDataSetChanged();
+        //adapter.notifyDataSetChanged();
 
     }
 
     private void addRow() {
-        if(dates.get(0).equals(""))
+        if(dates.get(dates.size() -1).equals(""))
             Toast.makeText(getApplicationContext(), "Please select a date!", Toast.LENGTH_SHORT).show();
         else {
             dates.add("");
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemInserted(dates.size());
+            //adapter.notifyDataSetChanged();
         }
 
     }
