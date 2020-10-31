@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,12 +17,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.FoodSearchQuery;
+import com.example.SelectDatesMutation;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.jetbrains.annotations.NotNull;
 
 public class PreorderDates extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener {
 
@@ -98,6 +107,20 @@ public class PreorderDates extends AppCompatActivity implements RecyclerViewAdap
 
     }
     public void openActivity7() {
+
+        ApolloConnector.setupApollo().mutate(SelectDatesMutation.builder().build()).enqueue(new ApolloCall.Callback<SelectDatesMutation.Data>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(@NotNull Response<SelectDatesMutation.Data> response) {
+                    Log.e(TAG, "onResponse: " + response.toString() );
+             //   runOnUiThread(() -> adapter.notifyDataSetChanged());
+            }
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+        });
+
         Intent intent = new Intent(this, SelectPersons.class);
         startActivity(intent);
     }

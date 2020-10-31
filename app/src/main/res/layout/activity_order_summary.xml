@@ -37,23 +37,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PERSON"
-                    android:textColor="@color/colorBlueText" />
+                    android:textColor="@color/colorBlueText"
+                    android:padding="5sp"/>
 
                 <TextView
                     android:id="@+id/pref"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PREFERENCE"
-                    android:textColor="@color/colorBlueText" />
+                    android:textColor="@color/colorBlueText"
+                    android:padding="5sp"/>
 
                 <TextView
                     android:id="@+id/item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ITEM"
-                    android:textColor="@color/colorBlueText" />
+                    android:textColor="@color/colorBlueText"
+                    android:padding="5sp"/>
             </TableRow>
         </TableLayout>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/showOrderItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+           />
 
         <Button
             android:id="@+id/button14"

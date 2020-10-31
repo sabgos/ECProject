@@ -37,6 +37,8 @@ public class Menu extends AppCompatActivity implements RecyclerViewAdapter3.Item
     RecyclerViewAdapter3 adapter;
     String TAG = "Hello menu";
     public ArrayList<String> itemsName = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,9 @@ public class Menu extends AppCompatActivity implements RecyclerViewAdapter3.Item
 
 
         ArrayList<String> itemsName = new ArrayList<>();
+       // ArrayList<String> itemsVeg = new ArrayList<>();
+//        ArrayList<String> itemsDiab = new ArrayList<>();
+
         ApolloConnector.setupApollo().query(FoodSearchQuery.builder().build()).enqueue(new ApolloCall.Callback<FoodSearchQuery.Data>() {
             public String TAG="Hello : GetMenu";
 
@@ -65,8 +70,11 @@ public class Menu extends AppCompatActivity implements RecyclerViewAdapter3.Item
                     Log.i(TAG, String.valueOf(i.get()));
                     Log.i(TAG, item.name());
 
-                    itemsName.add(item.name());
-                     Log.i(TAG + "2length=", String.valueOf(itemsName.size()));
+                    itemsName.add(item.name()+"  "+item.nonVegFlag()+"  "+item.diabeticFlag());
+                    //itemsVeg.add(item.nonVegFlag());
+                   // itemsDiab.add(item.diabeticFlag());
+
+                    Log.i(TAG + "2length=", String.valueOf(itemsName.size()));
                      Log.i(TAG + "2item=", String.valueOf(itemsName.get(itemsName.size() - 1)));
 
                     i.set(i.get() + 1);

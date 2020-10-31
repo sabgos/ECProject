@@ -55,7 +55,7 @@ public class Menus extends AppCompatActivity implements RecyclerViewAdapter3.Ite
                 List<FoodSearchQuery.FoodmenuSearch> foodmenuSearches = response.getData().foodmenuSearch();
                 for (FoodSearchQuery.FoodmenuSearch foodmenuSearch : foodmenuSearches) {
                     Log.e(TAG, "onResponse: " + foodmenuSearch );
-                    itemsName.add(foodmenuSearch.name());
+                    itemsName.add(foodmenuSearch.name()+"  "+foodmenuSearch.nonVegFlag()+"  "+foodmenuSearch.diabeticFlag());
                 }
                 runOnUiThread(() -> adapter.notifyDataSetChanged());
             }

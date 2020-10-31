@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,14 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.SelectDatesMutation;
+import com.example.SelectPersonsMutation;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.jetbrains.annotations.NotNull;
 
 public class SelectPersons extends AppCompatActivity implements RecyclerViewAdapter2.ItemClickListener {
 
@@ -33,6 +41,7 @@ public class SelectPersons extends AppCompatActivity implements RecyclerViewAdap
 
     private Button button1,button2;
     TextView textView;
+    private static final String TAG = "Persons Selected";
 
     @SuppressLint("RestrictedApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -87,6 +96,18 @@ public class SelectPersons extends AppCompatActivity implements RecyclerViewAdap
     }
 
     public void openActivity9() {
+        ApolloConnector.setupApollo().mutate(SelectPersonsMutation.builder().build()).enqueue(new ApolloCall.Callback<SelectPersonsMutation.Data>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(@NotNull Response<SelectPersonsMutation.Data> response) {
+                Log.e(TAG, "onResponse: " + response.toString() );
+                //   runOnUiThread(() -> adapter.notifyDataSetChanged());
+            }
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+        });
         Intent intent = new Intent(this, OrderSummary.class);
         startActivity(intent);
     }

@@ -30,6 +30,25 @@ public class FinalSummary extends AppCompatActivity {
         textView = findViewById(R.id.textback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        /*
+        ApolloConnector.setupApollo().query(OrderSummaryQuery.builder().build()).enqueue(new ApolloCall.Callback<OrderSummaryQuery.Data>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(@NotNull Response<OrderSummaryQuery.Data> response) {
+                List<OrderSummaryQuery.OrderSearch> orderSearches = response.getData().orderSearch();
+                for (OrderSummaryQuery.OrderSearch orderSearch : orderSearches) {
+                    Log.e(TAG, "onResponse: " + orderSearch );
+                }
+                runOnUiThread(() -> adapter.notifyDataSetChanged());
+            }
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+        });
+
+ */
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

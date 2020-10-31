@@ -15,6 +15,12 @@
     <item android:id="@+id/about2"
         android:title="About ServicePlace" />
 
+    <item android:id="@+id/help"
+        android:title="Help" />
+
+    <item android:id="@+id/custSupport"
+        android:title="Customer Support" />
+
     <item android:id="@+id/logout"
         android:title="Logout" />
 
