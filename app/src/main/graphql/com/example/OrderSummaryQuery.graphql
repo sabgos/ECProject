@@ -1,0 +1,14 @@
+query OrderSummaryQuery($searchFields :FoodmenuSearchCriteriaInput)
+{
+    foodmenuSearch(searchCriteria:$searchFields)
+    {
+        name
+        id
+        activeFlag
+        description
+        diabeticFlag
+        effOn
+        nonVegFlag
+        version
+    }
+}
