@@ -116,7 +116,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 nameText.setText(name);
                 String hasDiab = snapshot.child("diabetic").getValue(String.class);
                 String isVeg = snapshot.child("veg").getValue(String.class);
-                if(isVeg.startsWith("Non"))
+                if(isVeg != null && isVeg.startsWith("Non"))
                     mealPreference.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(WelcomeActivity.this, R.color.nonVegetarianColor)));
                 else
                     mealPreference.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(WelcomeActivity.this, R.color.vegetarianColor)));
