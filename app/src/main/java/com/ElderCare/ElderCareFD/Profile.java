@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.FoodSearchQuery;
+import com.example.UpdateProfileQueryMutation;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +32,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class Profile extends AppCompatActivity {
     private static final String TAG = "Profile";
@@ -159,7 +171,7 @@ public class Profile extends AppCompatActivity {
 //                    vegChipTV.setText(vegTxt);
 //                }
 
-                if (vegTxt.startsWith("Non")) {
+                if (vegTxt != null && vegTxt.startsWith("Non")) {
                     vegCB.setChecked(false);
                     nonVegCB.setChecked(true);
                 } else {
@@ -167,7 +179,7 @@ public class Profile extends AppCompatActivity {
                     vegCB.setChecked(true);
                 }
 
-                if (diabTxt.startsWith("Non")) {
+                if (diabTxt != null && diabTxt.startsWith("Non")) {
                     diabeticCB.setChecked(false);
                     nonDiabeticCB.setChecked(true);
                 } else {
@@ -220,25 +232,46 @@ public class Profile extends AppCompatActivity {
                 myRef.child("users").child(UID).child("diabetic").setValue("Diabetic");
             else
                 myRef.child("users").child(UID).child("diabetic").setValue("Non Diabetic");
-
-
-
 //            if (vegChip.getVisibility() == View.VISIBLE)
 //                myRef.child("users").child(UID).child("veg").setValue("Vegetarian");
 //            else
 //                myRef.child("users").child(UID).child("veg").setValue("Non Vegetarian");
 
+
+            //This is a dummy Call to test GraphQL Mutation in pgSQL.
+            updatePgSQLDB(43L, newName,"");
+
             Context context = getApplicationContext();
             CharSequence text = "Data Updated!";
             int duration = Toast.LENGTH_SHORT;
-
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-
             //db.ref("-Users/-KUanJA9egwmPsJCxXpv").update({ username: newName });
         });
-
     }
+
+    void updatePgSQLDB(Long id, String name, String email){
+        UpdateProfileQueryMutation profileQueryMutation = UpdateProfileQueryMutation.builder().id(id)
+                .name(name).email(email).build();
+        ApolloConnector.setupApollo().mutate(profileQueryMutation).enqueue(new ApolloCall.Callback<UpdateProfileQueryMutation.Data>() {
+            @Override
+            public void onResponse(@NotNull Response<UpdateProfileQueryMutation.Data> response) {
+                Log.e(TAG, "onResponse: " + response.toString() );
+                if(response.getData() == null){
+                    Log.e(TAG, "onResponse: " + "response.getData() => NULL" );
+                    return;
+                }
+                Log.e(TAG, "onResponse: " + response.getData().updateUserProfile() );
+                Log.e(TAG, "onResponse: pgSQLDB updated Successfully " );
+            }
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, "onResponse ERROR: " + e);
+                Log.e(TAG, "onResponse ERROR: " + e.getMessage() );
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,0 +1,28 @@
+mutation UpdateProfileQuery($id :Long, $name : String, $email : String){
+    updateUserProfile(name : $name, id : $id, email : $email){
+        name
+        id
+        email
+        addresses{
+            id
+            addr1
+            addr2
+            addr3
+            city
+            defaultFlag
+        }
+        userPersons{
+            id
+            name
+            user{
+                email
+                name
+            }
+        }
+        userPrefs{
+            id
+            pkey
+            pval
+        }
+    }
+}

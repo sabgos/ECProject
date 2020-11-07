@@ -1,0 +1,234 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type FoodMenu {
+    activeFlag: String
+    description: String
+    diabeticFlag: String
+    effOn: Date
+    id: Long
+    name: String
+    nonVegFlag: String
+    version: Int
+}
+
+"Mutation root"
+type Mutation {
+    completeSignup(user: UserInput): User
+    createNewUser(user: UserInput): User
+    orderDelete(id: Long): Boolean!
+    orderSave(order: OrderInput): Order
+    signUpWithContactNumber(contactNumber: String): User
+    updateUserProfile(email: String, id: Long, name: String): User
+}
+
+type Order {
+    id: Long
+    orderItems: [OrderItems]
+    placedOn: Date!
+    updateOn: Date
+    version: Int
+}
+
+type OrderItems {
+    activeFlag: String
+    completeOn: Date
+    diabeticFlag: String
+    id: Long
+    itemsAtivities: [OrderItemsAtivity]
+    nonVegFlag: String
+    order: Order
+    person: UserPerson
+    scheduledOn: Date
+    version: Int
+}
+
+type OrderItemsAtivity {
+    actCode: String!
+    details: String!
+    id: Long
+    orderItem: OrderItems
+    postedOn: Date
+    postedSystem: String
+    postedUserId: String
+    summary: String!
+    version: Int
+}
+
+type OrderSearchResult {
+    id: Long
+    orderItems: [OrderItems]
+    placedOn: Date!
+    updateOn: Date
+    version: Int
+}
+
+"Query root"
+type Query {
+    allUsers: [User]
+    foodmenu(id: Long): Order
+    foodmenuSearch(searchCriteria: FoodmenuSearchCriteriaInput): [FoodMenu]
+    foodmenuSearch2(data: String): [FoodMenu]
+    order(id: Long): Order
+    orderSearch(searchCriteria: OrderSearchCriteriaInput): [OrderSearchResult]
+    user(id: Long): User
+    userSearch(searchCriteria: UserSearchCriteriaInput): [User]
+}
+
+type User {
+    addresses: [UserAddress]
+    contactNo: String!
+    email: String
+    id: Long
+    name: String
+    userPersons: [UserPerson]
+    userPrefs: [UserPref]
+    version: Int
+}
+
+type UserAddress {
+    addr1: String
+    addr2: String
+    addr3: String
+    city: String
+    createdOn: Date
+    defaultFlag: String
+    id: Long
+    postalCode: String
+    updateOn: Date
+    user: User
+    version: Int
+}
+
+type UserPerson {
+    id: Long
+    name: String
+    user: User
+    version: Int
+}
+
+type UserPref {
+    id: Long
+    pkey: String
+    pval: String
+    user: User
+    version: Int
+}
+
+input FoodmenuSearchCriteriaInput {
+    activeFlag: String
+    description: String
+    diabeticFlag: String
+    effOn: Date
+    id: Long
+    name: String
+    nonVegFlag: String
+    version: Int
+}
+
+input OrderInput {
+    id: Long
+    orderItems: [OrderItemsInput]
+    placedOn: Date!
+    updateOn: Date
+    version: Int
+}
+
+input OrderItemsAtivityInput {
+    actCode: String!
+    details: String!
+    id: Long
+    orderItem: OrderItemsInput
+    postedOn: Date
+    postedSystem: String
+    postedUserId: String
+    summary: String!
+    version: Int
+}
+
+input OrderItemsInput {
+    activeFlag: String
+    completeOn: Date
+    diabeticFlag: String
+    id: Long
+    itemsAtivities: [OrderItemsAtivityInput]
+    nonVegFlag: String
+    order: OrderInput
+    person: UserPersonInput
+    scheduledOn: Date
+    version: Int
+}
+
+input OrderSearchCriteriaInput {
+    id: Long
+    orderItems: [OrderItemsInput]
+    placedOn: Date!
+    test: String
+    updateOn: Date
+    version: Int
+}
+
+input UserAddressInput {
+    addr1: String
+    addr2: String
+    addr3: String
+    city: String
+    createdOn: Date
+    defaultFlag: String
+    id: Long
+    postalCode: String
+    updateOn: Date
+    user: UserInput
+    version: Int
+}
+
+input UserInput {
+    addresses: [UserAddressInput]
+    contactNo: String!
+    email: String
+    id: Long
+    name: String
+    userPersons: [UserPersonInput]
+    userPrefs: [UserPrefInput]
+    version: Int
+}
+
+input UserPersonInput {
+    id: Long
+    name: String
+    user: UserInput
+    version: Int
+}
+
+input UserPrefInput {
+    id: Long
+    pkey: String
+    pval: String
+    user: UserInput
+    version: Int
+}
+
+input UserSearchCriteriaInput {
+    addresses: [UserAddressInput]
+    contactNo: String!
+    email: String
+    id: Long
+    name: String
+    userPersons: [UserPersonInput]
+    userPrefs: [UserPrefInput]
+    version: Int
+}
+
+
+"Built-in scalar representing an instant in time"
+scalar Date
+
+"Long type"
+scalar Long
+
+"Unrepresentable type"
+scalar UNREPRESENTABLE

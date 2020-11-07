@@ -73,6 +73,8 @@ dependencies {
     // implementation 'com.apollographql.apollo:apollo-android-support:2.3.1'
     //implementation 'com.apollographql.apollo:apollo-runtime:2.3.1'
     implementation 'javax.annotation:jsr250-api:1.0'
-    compile 'com.graphql-java:graphql-java:13.0'
+    implementation 'com.graphql-java:graphql-java:13.0'
+    //Use below code in terminal to generate Schema.json on that given path.
+    //gradlew downloadApolloSchema --endpoint="http://localhost:8080/graphql" --schema="app/src/main/graphql/com/example/schema.json"
 
 }
