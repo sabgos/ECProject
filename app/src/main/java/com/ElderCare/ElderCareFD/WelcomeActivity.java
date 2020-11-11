@@ -3,7 +3,9 @@ package com.ElderCare.ElderCareFD;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,9 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.RegisterQuery;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +32,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -78,6 +89,27 @@ public class WelcomeActivity extends AppCompatActivity {
         cvWhatsApp = findViewById(R.id.cvWhatsApp);
 
 
+        ApolloConnector.setupApollo().query(RegisterQuery.builder().build()).enqueue(new ApolloCall.Callback<RegisterQuery.Data>() {
+            private static final String TAG = "Welcome";
+
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(@NotNull Response<RegisterQuery.Data> response) {
+                List<RegisterQuery.UserSearch> userSearches = response.getData().userSearch();
+                for (RegisterQuery.UserSearch userSearch : userSearches) {
+                    Log.e(TAG, "onResponse: " + userSearch );
+                    //itemsName.add(foodmenuSearch.name()+"  "+foodmenuSearch.nonVegFlag()+"  "+foodmenuSearch.diabeticFlag());
+                    nameText.setText(userSearch.name());
+                    //addrText.setText(userSearch.addresses());
+                }
+            }
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+        });
+
+
         cvWhatsApp.setOnClickListener(v -> {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -107,6 +139,7 @@ public class WelcomeActivity extends AppCompatActivity {
         //Getting Firebase Instance
 
         //Getting Reference to Root Node
+        /*
         DatabaseReference myRef = database.getReference();
         myRef.child("users").child(UID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,6 +163,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
+
+         */
 
 
 //        myRef.addListenerForSingleValueEvent(new ValueEventListener() {

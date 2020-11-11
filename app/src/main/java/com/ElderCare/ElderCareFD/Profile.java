@@ -230,6 +230,7 @@ public class Profile extends AppCompatActivity {
 
             //This is a dummy Call to test GraphQL Mutation in pgSQL.
             updatePgSQLDB(43L, newName,"");
+          //  updatePgSQLDB(1, "Riktam Nandi","rikktam.nandi@gmail.com");
 
             Context context = getApplicationContext();
             CharSequence text = "Data Updated!";
