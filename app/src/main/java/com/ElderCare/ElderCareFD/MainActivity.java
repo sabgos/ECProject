@@ -16,10 +16,13 @@ import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
-import com.firebase.client.annotations.NotNull;
+import com.example.SignUpWithContactNumberMutation;
+import com.example.UpdateProfileQueryMutation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firestore.v1.StructuredQuery;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton login;
@@ -72,4 +75,5 @@ public class MainActivity extends AppCompatActivity {
  */
         }
     }
+
 }

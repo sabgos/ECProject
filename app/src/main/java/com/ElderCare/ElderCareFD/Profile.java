@@ -58,8 +58,8 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.updated_activity_profile);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        UID = user.getUid();
+       // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+      //  UID = user.getUid();
 
         nameText = (EditText) findViewById(R.id.editTextPersonName2);
         //  IDText= (TextView) findViewById(R.id.textViewID);
@@ -137,7 +137,7 @@ public class Profile extends AppCompatActivity {
         // diab = (CheckBox) findViewById(R.id.diabProf);
         //  veg = (CheckBox) findViewById(R.id.vegProf);
 
-
+/*
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -192,17 +192,7 @@ public class Profile extends AppCompatActivity {
                 //vegText.setText(vegTxt);
 
                 //Log.e(TAG, diabTxt);
-/*
-                if(diabTxt.equalsIgnoreCase("Diabetic"))
-                    diab.setChecked(true);
-                else
-                    diab.setChecked(false);
 
-                if(vegTxt.equalsIgnoreCase("Vegetarian"))
-                    veg.setChecked(true);
-                else
-                    veg.setChecked(false);
-*/
             }
 
             @Override
@@ -211,12 +201,12 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-
+*/
         updateButton = (Button) findViewById(R.id.btnUpdate);
         updateButton.setOnClickListener(v -> {
             String newName = nameText.getText().toString();
             String newAddr = addrsText.getText().toString();
-
+/*
             myRef.child("users").child(UID).child("username").setValue(newName);
             myRef.child("users").child(UID).child("address").setValue(newAddr);
             //myRef.child("users").child(UID).child("diabetic").setValue(diabeticChipTV.getText());
@@ -236,7 +226,7 @@ public class Profile extends AppCompatActivity {
 //                myRef.child("users").child(UID).child("veg").setValue("Vegetarian");
 //            else
 //                myRef.child("users").child(UID).child("veg").setValue("Non Vegetarian");
-
+*/
 
             //This is a dummy Call to test GraphQL Mutation in pgSQL.
             updatePgSQLDB(43L, newName,"");

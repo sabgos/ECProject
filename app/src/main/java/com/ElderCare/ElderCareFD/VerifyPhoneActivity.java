@@ -12,6 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.SignUpWithContactNumberMutation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
@@ -21,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +43,8 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Button btnSignIn;
     String mobile;
+
+    private static final String TAG = "Login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +80,28 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    void newUserPgSQLDB(String number){
+        SignUpWithContactNumberMutation signUpMutation = SignUpWithContactNumberMutation.builder().number(number).build();
+        ApolloConnector.setupApollo().mutate(signUpMutation).enqueue(new ApolloCall.Callback<SignUpWithContactNumberMutation.Data>() {
+            @Override
+            public void onResponse(@org.jetbrains.annotations.NotNull Response<SignUpWithContactNumberMutation.Data> response) {
+                Log.e(TAG, "onResponse: " + response.toString() );
+                if(response.getData() == null){
+                    Log.e(TAG, "onResponse: " + "response.getData() => NULL" );
+                    return;
+                }
+                Log.e(TAG, "onResponse: " + response.getData().signUpWithContactNumber() );
+                Log.e(TAG, "onResponse: pgSQLDB updated Successfully " );
+            }
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e(TAG, "onResponse ERROR: " + e);
+                Log.e(TAG, "onResponse ERROR: " + e.getMessage() );
+            }
+        });
     }
 
     //the method is sending verification code
@@ -143,6 +173,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                                    // long creationTimestamp = user.getMetadata().getCreationTimestamp();
                                     //long lastSignInTimestamp = user.getMetadata().getLastSignInTimestamp();
                                     //if (creationTimestamp == lastSignInTimestamp) {
+                                    newUserPgSQLDB("9856852548");
                                         Intent intent = new Intent(VerifyPhoneActivity.this, RegistrationActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         intent.putExtra("mobile", mobile);

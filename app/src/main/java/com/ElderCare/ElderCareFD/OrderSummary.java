@@ -45,7 +45,7 @@ public class OrderSummary extends AppCompatActivity implements RecyclerViewAdapt
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ArrayList<String> ordersList = new ArrayList<>();
-        ordersList.add("rrrrrr");
+        ordersList.add("Saberi  NonVeg/Diabetic Chapati");
 
         RecyclerView recyclerView = findViewById(R.id.showOrderItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
