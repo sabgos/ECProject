@@ -1,0 +1,29 @@
+mutation signUpWithContactNumber($number :String){
+    signUpWithContactNumber(contactNumber :$number){
+        name
+        id
+        email
+        contactNo
+        addresses{
+            id
+            addr1
+            addr2
+            addr3
+            city
+            defaultFlag
+        }
+        userPersons{
+            id
+            name
+            user{
+                email
+                name
+            }
+        }
+        userPrefs{
+            id
+            pkey
+            pval
+        }
+    }
+}
