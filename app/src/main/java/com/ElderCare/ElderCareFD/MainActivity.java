@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //check whether the user is logged in
-        if (currentUser != null) {
+       // if (currentUser != null) {
+        if(SaveSharedPreference.getLoggedStatus(getApplicationContext())){
             Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
             startActivity(intent);
             finish();

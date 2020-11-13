@@ -88,7 +88,6 @@ public class WelcomeActivity extends AppCompatActivity {
         cvPreOrder = findViewById(R.id.cvPreOrder);
         cvWhatsApp = findViewById(R.id.cvWhatsApp);
 
-
         ApolloConnector.setupApollo().query(RegisterQuery.builder().build()).enqueue(new ApolloCall.Callback<RegisterQuery.Data>() {
             private static final String TAG = "Welcome";
 
@@ -256,8 +255,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 return true;
             case R.id.logout:
 
-                firebaseAuth = FirebaseAuth.getInstance();
-                firebaseAuth.signOut();
+               // firebaseAuth = FirebaseAuth.getInstance();
+               // firebaseAuth.signOut();
+                SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
                 startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
                 return true;
             default:
