@@ -253,8 +253,13 @@ public class WelcomeActivity extends AppCompatActivity {
             case R.id.about2:
                 startActivity(new Intent(this, About2.class));
                 return true;
+            case R.id.help:
+                startActivity(new Intent(this, Help.class));
+                return true;
+            case R.id.custSupport:
+                startActivity(new Intent(this, CustomerSupport.class));
+                return true;
             case R.id.logout:
-
                // firebaseAuth = FirebaseAuth.getInstance();
                // firebaseAuth.signOut();
                 SaveSharedPreference.setLoggedIn(getApplicationContext(), false);

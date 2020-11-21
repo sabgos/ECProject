@@ -116,6 +116,8 @@ public class OrderSummary extends AppCompatActivity implements RecyclerViewAdapt
             case R.id.about2:
                 startActivity(new Intent(this, About2.class));
                 return true;
+            case R.id.help:
+                startActivity(new Intent(this, Help.class));
             case R.id.logout:
                 firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();

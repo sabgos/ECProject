@@ -57,6 +57,10 @@ public class About1 extends AppCompatActivity {
             case R.id.logout:
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
+            case R.id.help:
+                startActivity(new Intent(this, Help.class));
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -54,6 +54,8 @@ public class Orders extends AppCompatActivity {
             case R.id.logout:
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
+            case R.id.help:
+                startActivity(new Intent(this, Help.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
