@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CustomerSupport"></activity>
+
         <!-- <activity android:name=".Dashboard"></activity> -->
         <activity
             android:name=".LoginActivity"
@@ -30,8 +30,7 @@
         <activity android:name=".About2" />
         <activity android:name=".About1" />
         <activity android:name=".Help" />
-        <activity android:name=".CustomerSupport"
-            tools:ignore="DuplicateActivity" />
+        <activity android:name=".CustomerSupport"/>
         <activity android:name=".Orders" />
         <activity
             android:name=".Profile"

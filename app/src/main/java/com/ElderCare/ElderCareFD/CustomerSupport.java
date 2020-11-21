@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,16 +26,15 @@ public class CustomerSupport extends AppCompatActivity {
         Button email= (Button) findViewById(R.id.btnEmail);
         ImageView wsap= (ImageView) findViewById(R.id.imageWhatsapp);
 
-
         call.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:9830588385"));
 
-                if (ActivityCompat.checkSelfPermission(CustomerSupport.this,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
+             //   if (ActivityCompat.checkSelfPermission(CustomerSupport.this,
+               //         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                 //   return;
+                //}
                 startActivity(callIntent);
             }
         });
@@ -61,19 +61,36 @@ public class CustomerSupport extends AppCompatActivity {
 
     }
 
+
+
+
     @SuppressLint("LongLogTag")
     protected void sendEmail() {
-        Log.i("Send email", "");
-        String[] TO = {""};
-        String[] CC = {""};
+        //Log.i("Send email", "");
+        //String[] TO = {""};
+        //String[] CC = {""};
+
+        EditText editTextTo=(EditText)findViewById(R.id.editText1);
+        EditText  editTextSubject=(EditText)findViewById(R.id.editText2);
+        EditText  editTextMessage=(EditText)findViewById(R.id.editText3);
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        String to=editTextTo.getText().toString();
+        String subject=editTextSubject.getText().toString();
+        String message=editTextMessage.getText().toString();
+
+       // Intent email = new Intent(Intent.ACTION_SEND);
+       // email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
+      //  email.putExtra(Intent.EXTRA_SUBJECT, subject);
+      //  email.putExtra(Intent.EXTRA_TEXT, message);
 
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
+      //  emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, message);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
