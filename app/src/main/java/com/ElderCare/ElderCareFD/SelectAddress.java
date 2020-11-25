@@ -123,9 +123,10 @@ public class SelectAddress extends AppCompatActivity {
             case R.id.help:
                 startActivity(new Intent(this, Help.class));
             case R.id.logout:
-                firebaseAuth = FirebaseAuth.getInstance();
-                firebaseAuth.signOut();
-                startActivity(new Intent(SelectAddress.this, MainActivity.class));
+                Utils.logout(this);
+//                firebaseAuth = FirebaseAuth.getInstance();
+//                firebaseAuth.signOut();
+//                startActivity(new Intent(SelectAddress.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

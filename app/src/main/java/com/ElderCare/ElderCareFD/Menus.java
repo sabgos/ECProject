@@ -97,7 +97,8 @@ public class Menus extends AppCompatActivity implements RecyclerViewAdapter3.Ite
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(Menus.this, MainActivity.class));
+                //startActivity(new Intent(Menus.this, MainActivity.class));
+                Utils.logout(this);
                 return true;
             case R.id.help:
                 startActivity(new Intent(Menus.this, Help.class));

@@ -260,10 +260,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, CustomerSupport.class));
                 return true;
             case R.id.logout:
-               // firebaseAuth = FirebaseAuth.getInstance();
-               // firebaseAuth.signOut();
-                SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
-                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                Utils.logout(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

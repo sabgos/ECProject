@@ -142,9 +142,10 @@ public class SelectPersons extends AppCompatActivity implements RecyclerViewAdap
             case R.id.help:
                 startActivity(new Intent(this, Help.class));
             case R.id.logout:
-                firebaseAuth = FirebaseAuth.getInstance();
-                firebaseAuth.signOut();
-                startActivity(new Intent(SelectPersons.this, MainActivity.class));
+                Utils.logout(this);
+//                firebaseAuth = FirebaseAuth.getInstance();
+//                firebaseAuth.signOut();
+//                startActivity(new Intent(SelectPersons.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

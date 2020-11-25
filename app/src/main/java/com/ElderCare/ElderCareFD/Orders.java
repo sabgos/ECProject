@@ -52,7 +52,8 @@ public class Orders extends AppCompatActivity {
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(this, MainActivity.class));
+                Utils.logout(this);
+                //startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.help:
                 startActivity(new Intent(this, Help.class));

@@ -80,9 +80,10 @@ public class FinalSummary extends AppCompatActivity {
             case R.id.help:
                 startActivity(new Intent(this, Help.class));
             case R.id.logout:
-                firebaseAuth = FirebaseAuth.getInstance();
-                firebaseAuth.signOut();
-                startActivity(new Intent(FinalSummary.this, MainActivity.class));
+                Utils.logout(this);
+//                firebaseAuth = FirebaseAuth.getInstance();
+//                firebaseAuth.signOut();
+//                startActivity(new Intent(FinalSummary.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -59,7 +59,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         //getting mobile number from the previous activity
         //and sending the verification code to the number
         Intent intent = getIntent();
-         mobile = intent.getStringExtra("mobile");
+        mobile = intent.getStringExtra("mobile");
         sendVerificationCode(mobile);
 
 
@@ -83,23 +83,24 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     }
 
 
-    void newUserPgSQLDB(String number){
+    void newUserPgSQLDB(String number) {
         SignUpWithContactNumberMutation signUpMutation = SignUpWithContactNumberMutation.builder().number(number).build();
         ApolloConnector.setupApollo().mutate(signUpMutation).enqueue(new ApolloCall.Callback<SignUpWithContactNumberMutation.Data>() {
             @Override
             public void onResponse(@org.jetbrains.annotations.NotNull Response<SignUpWithContactNumberMutation.Data> response) {
-                Log.e(TAG, "onResponse: " + response.toString() );
-                if(response.getData() == null){
-                    Log.e(TAG, "onResponse: " + "response.getData() => NULL" );
+                Log.e(TAG, "onResponse: " + response.toString());
+                if (response.getData() == null) {
+                    Log.e(TAG, "onResponse: " + "response.getData() => NULL");
                     return;
                 }
-                Log.e(TAG, "onResponse: " + response.getData().signUpWithContactNumber() );
-                Log.e(TAG, "onResponse: pgSQLDB updated Successfully " );
+                Log.e(TAG, "onResponse: " + response.getData().signUpWithContactNumber());
+                Log.e(TAG, "onResponse: pgSQLDB updated Successfully ");
             }
+
             @Override
             public void onFailure(@NotNull ApolloException e) {
                 Log.e(TAG, "onResponse ERROR: " + e);
-                Log.e(TAG, "onResponse ERROR: " + e.getMessage() );
+                Log.e(TAG, "onResponse ERROR: " + e.getMessage());
             }
         });
     }
@@ -140,7 +141,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                 @Override
                 public void onVerificationFailed(FirebaseException e) {
                     Toast.makeText(VerifyPhoneActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    Log.e("TAG",e.getMessage() );
+                    Log.e("TAG", e.getMessage());
                 }
 
                 //when the code is generated then this method will receive the code.
@@ -169,21 +170,26 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     //verification successful we will start the profile activity
-                                   // FirebaseUser user = task.getResult().getUser();
-                                   // long creationTimestamp = user.getMetadata().getCreationTimestamp();
+                                    // FirebaseUser user = task.getResult().getUser();
+                                    // long creationTimestamp = user.getMetadata().getCreationTimestamp();
                                     //long lastSignInTimestamp = user.getMetadata().getLastSignInTimestamp();
                                     //if (creationTimestamp == lastSignInTimestamp) {
+
+                                    //So user Logged in. So now save info in SharedPreference
+
+                                    SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+
                                     newUserPgSQLDB("9856852548");
-                                        Intent intent = new Intent(VerifyPhoneActivity.this, RegistrationActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        intent.putExtra("mobile", mobile);
+                                    Intent intent = new Intent(VerifyPhoneActivity.this, RegistrationActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.putExtra("mobile", mobile);
                                     startActivity(intent);
                                     //}
                                     //else
                                     //{
-                                      //  Intent intent = new Intent(VerifyPhoneActivity.this, WelcomeActivity.class);
-                                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        //startActivity(intent);
+                                    //  Intent intent = new Intent(VerifyPhoneActivity.this, WelcomeActivity.class);
+                                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    //startActivity(intent);
 
 
                                 } else {

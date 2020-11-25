@@ -131,7 +131,8 @@ public class Menu extends AppCompatActivity implements RecyclerViewAdapter3.Item
                 startActivity(new Intent(this, About2.class));
                 return true;
             case R.id.logout:
-                startActivity(new Intent(Menu.this, MainActivity.class));
+                Utils.logout(this);
+                //startActivity(new Intent(Menu.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

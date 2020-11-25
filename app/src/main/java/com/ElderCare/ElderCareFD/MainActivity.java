@@ -27,9 +27,9 @@ import org.jetbrains.annotations.NotNull;
 public class MainActivity extends AppCompatActivity {
     private ImageButton login;
     private CardView register;
-    FirebaseUser currentUser;
+    //FirebaseUser currentUser;
     private EditText editTextMobile;
-    private Object OrderMutation;
+    //private Object OrderMutation;
 
 
     @Override
@@ -40,41 +40,28 @@ public class MainActivity extends AppCompatActivity {
         register = (CardView) findViewById(R.id.buttonReg);
         editTextMobile = findViewById(R.id.et_phone);
         //login = (Button) findViewById(R.id.buttonLogin);
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        //currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-
-        ApolloClient apolloClient = ApolloClient.builder()
-                .serverUrl("http://167.71.232.133/graphql")
-                .build();
-
-
-        //check whether the user is logged in
-       // if (currentUser != null) {
-        if(SaveSharedPreference.getLoggedStatus(getApplicationContext())){
+        if(checkIfUserAlreadyLoggedIn()){
             Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
             startActivity(intent);
             finish();
-        } else {
-            register.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String mobileNo = editTextMobile.getText().toString().trim();
-                    Intent intent = new Intent(MainActivity.this, VerifyPhoneActivity.class);
-                    intent.putExtra("mobile", mobileNo);
-                    startActivity(intent);
-                }
-            });
-/*
-            login.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-            });
-
- */
         }
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mobileNo = editTextMobile.getText().toString().trim();
+                Intent intent = new Intent(MainActivity.this, VerifyPhoneActivity.class);
+                intent.putExtra("mobile", mobileNo);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    private boolean checkIfUserAlreadyLoggedIn() {
+        return SaveSharedPreference.getLoggedStatus(getApplicationContext());
     }
 
 }

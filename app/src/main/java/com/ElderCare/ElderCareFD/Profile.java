@@ -296,9 +296,10 @@ public class Profile extends AppCompatActivity {
             case R.id.help:
                 startActivity(new Intent(this, Help.class));
             case R.id.logout:
-                firebaseAuth = FirebaseAuth.getInstance();
-                firebaseAuth.signOut();
-                startActivity(new Intent(Profile.this, MainActivity.class));
+                Utils.logout(this);
+//                firebaseAuth = FirebaseAuth.getInstance();
+//                firebaseAuth.signOut();
+//                startActivity(new Intent(Profile.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

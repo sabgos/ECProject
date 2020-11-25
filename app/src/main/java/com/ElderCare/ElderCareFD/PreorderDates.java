@@ -156,9 +156,10 @@ public class PreorderDates extends AppCompatActivity implements RecyclerViewAdap
             case R.id.help:
                 startActivity(new Intent(this, Help.class));
             case R.id.logout:
-                firebaseAuth = FirebaseAuth.getInstance();
-                firebaseAuth.signOut();
-                startActivity(new Intent(PreorderDates.this, MainActivity.class));
+                Utils.logout(this);
+//                firebaseAuth = FirebaseAuth.getInstance();
+//                firebaseAuth.signOut();
+//                startActivity(new Intent(PreorderDates.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
