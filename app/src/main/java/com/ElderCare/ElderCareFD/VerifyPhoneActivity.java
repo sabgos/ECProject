@@ -179,7 +179,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
                                     SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
 
-                                    newUserPgSQLDB("9856852548");
+                                    newUserPgSQLDB(mobile);
                                     Intent intent = new Intent(VerifyPhoneActivity.this, RegistrationActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     intent.putExtra("mobile", mobile);

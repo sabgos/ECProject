@@ -28,8 +28,8 @@ public class CustomerSupport extends AppCompatActivity {
 
         call.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:9830588385"));
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:9986269411"));
 
              //   if (ActivityCompat.checkSelfPermission(CustomerSupport.this,
                //         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -49,13 +49,18 @@ public class CustomerSupport extends AppCompatActivity {
         wsap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT,"Text sent");
-                sendIntent.setType("text/plain");
-                startActivity(sendIntent);
+              //  Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+
+
+  //              sendIntent.putExtra(Intent.EXTRA_TEXT,"Text sent");
+    //            sendIntent.setType("text/plain");
+      //          startActivity(sendIntent);
+                openWhatsApp(v);
             }
         });
+
+
 
 
 
@@ -66,38 +71,30 @@ public class CustomerSupport extends AppCompatActivity {
 
     @SuppressLint("LongLogTag")
     protected void sendEmail() {
-        //Log.i("Send email", "");
-        //String[] TO = {""};
-        //String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto","borntohelpindia@gmail.com", null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Support");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+    }
 
-        EditText editTextTo=(EditText)findViewById(R.id.editText1);
-        EditText  editTextSubject=(EditText)findViewById(R.id.editText2);
-        EditText  editTextMessage=(EditText)findViewById(R.id.editText3);
 
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-
-        String to=editTextTo.getText().toString();
-        String subject=editTextSubject.getText().toString();
-        String message=editTextMessage.getText().toString();
-
-       // Intent email = new Intent(Intent.ACTION_SEND);
-       // email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
-      //  email.putExtra(Intent.EXTRA_SUBJECT, subject);
-      //  email.putExtra(Intent.EXTRA_TEXT, message);
-
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
-      //  emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, message);
-
+    public void openWhatsApp(View view){
+        PackageManager pm=getPackageManager();
         try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            finish();
-            Log.i("Finished sending email...", "");
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(CustomerSupport.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+
+
+            String toNumber = "9986269411";
+            Intent sendIntent = new Intent(Intent.ACTION_SENDTO,Uri.parse("smsto:" + "" + toNumber + "?body=" + ""));
+            sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(this,"no whatsapp",Toast.LENGTH_LONG).show();
+
         }
     }
+
+
 }
