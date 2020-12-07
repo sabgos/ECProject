@@ -160,7 +160,7 @@ public class RegistrationActivity extends AppCompatActivity{
                 myRef.child(UID).child("phone").setValue(mobile);
 
  */
-                registerPgSQLDB(UserPersonInput.builder().build());
+             ////////////////   registerPgSQLDB(UserPersonInput.builder().build());
                 startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
             }
         });
